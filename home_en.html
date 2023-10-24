@@ -4,86 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Personal Portfolio</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0 auto;
-        max-width: 80%;
-        padding: 0 20px;
-        min-width: 650px;
-      }
-
-      .nav-link {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-      }
-
-      .header {
-        position: fixed; /* Fixed position to keep it at the top */
-        top: 0;
-        background-color: #333;
-        color: #fff;
-        padding: 10px 20px;
-        display: flex;
-        left: 0;
-        right: 0;
-        justify-content: center;
-        align-content: center;
-      }
-
-      .header a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 20px;
-        display: flex;
-        align-items: center; /* Vertically center content */
-
-      }
-
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-        display: flex;
-        align-items: center; /* Vertically center content */
-      }
-
-      .section {
-        padding: 20px;
-        margin-top: 70px; /* To push content down to avoid overlapping with the fixed header */
-        cursor: default; /* Change cursor to text when hovering over text */
-      }
-
-      footer {
-        text-align: center;
-        background-color: #333; /* Customize the background color as needed */
-        color: #fff; /* Customize the text color as needed */
-        padding: 10px 0;
-      }
-
-      .footer-content {
-        margin: 0 auto;
-        max-width: 800px; /* Adjust the maximum width to your preference */
-      }
-
-      .photo-text-section {
-        display: flex;
-        align-items: center; /* Vertically center content */
-        padding: 20px;
-      }
-
-      .photo {
-        flex: 1; /* Occupy 50% of the width */
-        margin-right: 20px; /* Add some spacing between photo and text */
-      }
-
-      .text {
-        flex: 1; /* Occupy 50% of the width */
-      }
-
-
-      /* Add your CSS styles here */
-    </style>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script type="text/javascript" src="javascript/script.js"></script>
   </head>
   <body>
     <div class="header">
@@ -301,7 +223,7 @@
     <div class="section" id="contact">
       <h1>Contact</h1>
       <p>
-        Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media.
+        Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
       </p>
 
       <div class="contact-info">
@@ -313,31 +235,30 @@
     </div>
 
 
-    <!-- New Footer Section -->
     <footer>
       <div class="footer-content">
         <p>&copy; 2023 Tomasz Zbroszczyk</p>
       </div>
-    </footer>
+      <script>
+        const navLinks = document.querySelectorAll('.nav-link');
 
-    <script>
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', smoothScroll);
-      });
-
-      function smoothScroll(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        const yOffset = -60; // Adjust for fixed header height
-
-        window.scroll({
-          top: targetElement.offsetTop + yOffset,
-          behavior: 'smooth'
+        navLinks.forEach(link => {
+          link.addEventListener('click', smoothScroll);
         });
-      }
-    </script>
+
+        function smoothScroll(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          const yOffset = -60;
+
+          window.scroll({
+            top: targetElement.offsetTop + yOffset,
+            behavior: 'smooth'
+          });
+        }
+      </script>
+
+    </footer>
   </body>
 </html>
