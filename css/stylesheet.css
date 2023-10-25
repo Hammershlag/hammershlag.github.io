@@ -1,13 +1,15 @@
 body {
+    background-color: #000000;
     font-family: Arial, sans-serif;
     margin: 0 auto;
     max-width: 80%;
     padding: 0 20px;
-    min-width: 650px;
+    min-width: 800px;
 }
 
 .nav-link {
     text-decoration: none;
+    font-size: 18px;
     color: #fff;
     font-weight: bold;
 }
@@ -24,6 +26,17 @@ body {
     justify-content: center;
     align-content: center;
 }
+#home, #services, #testimonials {
+    background-color: #222222;
+}
+
+#about, #portfolio, #contact {
+    background-color: #444444;
+}
+
+#contact {
+    padding-bottom: 80px;
+}
 
 .header a {
     color: #fff;
@@ -35,28 +48,46 @@ body {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
 
+.logo img { /* use margin-right to space from text or max-width:5% */
+    min-width: 35px;
+    height: auto;
+    max-height: 35px;
+}
+
+
 .section {
     padding: 20px;
-    margin-top: 70px;
+    padding-top: 80px;
+    margin-top: 0;
     cursor: default;
 }
 
 footer {
-    text-align: center;
+    bottom: 0;
+    position: fixed; /* doesnt work witout this */
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px 20px;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-content: center;
 }
 
 .footer-content {
     margin: 0 auto;
     max-width: 800px;
+}
+
+.text {
+    flex: 1;
 }
 
 .photo-text-section {
@@ -67,9 +98,18 @@ footer {
 
 .photo {
     flex: 1;
-    margin-right: 20px;
+    text-align: center; /* Center the image horizontally */
+    display: flex;
+    justify-content: center; /* Center the image vertically */
 }
 
-.text {
-    flex: 1;
+img {
+    max-width: 100%; /* To ensure the image doesn't exceed its container */
+    max-height: 100%; /* To ensure the image doesn't exceed its container */
+    object-fit: contain;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
 }

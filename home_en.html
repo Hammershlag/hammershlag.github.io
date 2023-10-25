@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Portfolio</title>
+    <title>Tomasz Zbroszczyk - Personal Portfolio</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <script type="text/javascript" src="javascript/script.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
   </head>
   <body>
     <div class="header">
-      <div class="logo"><a class="nav-link" href="#home"><img src="https://via.placeholder.com/30" alt="Your Logo"></a></div>
+      <div class="logo"><a class="nav-link" href="#home"><img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo"></a></div>
       <a class="nav-link" href="#home">Home</a>
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#services">Services</a>
@@ -21,7 +22,7 @@
       <br><br>
       <div class="photo-text-section">
         <div class="photo">
-          <img src="https://via.placeholder.com/300" alt="Your Name">
+          <img src="https://via.placeholder.com/300" alt="Tomasz Zbroszczyk">
         </div>
         <div class="text">
           <p>
@@ -81,7 +82,7 @@
           </p>
         </div>
         <div class="photo">
-        <img src="https://via.placeholder.com/300" alt="Your Name">
+        <img src="photos/diving.jpg" alt="Tomasz Zbroszczyk">
       </div>
       </div>
     </div>
@@ -199,7 +200,43 @@
           <strong>Object-Oriented Programming (OOP)</strong> - Proficient in applying OOP principles in software development.
         </li>
       </ul>
-
+      <p>
+        In addition to programming languages, I've also gained expertise in various tools, skills, and database technologies:
+      <ul>
+        <li>
+          <strong>UNIX</strong> - Proficient in UNIX systems and commands.
+        </li>
+        <li>
+          <strong>Docker</strong> - Experienced in containerization and Docker technology.
+        </li>
+        <li>
+          <strong>Git</strong> - Proficient in using Git for version control and collaboration.
+        </li>
+        <li>
+          <strong>LaTeX</strong> - Skilled in LaTeX for creating professional technical documentation.
+        </li>
+        <li>
+          <strong>Writing Technical Documentation</strong> - Capable of crafting well-structured and informative technical documents.
+        </li>
+        <li>
+          <strong>Presentation Skills</strong> - Proficient in presenting technical concepts effectively.
+        </li>
+        <li>
+          <strong>Algorithms and Data Structures</strong> - Knowledgeable in designing and implementing efficient algorithms and data structures.
+        </li>
+        <li>
+          <strong>Problem Solving</strong> - Skilled at tackling complex problems and finding innovative solutions.
+        </li>
+        <li>
+          <strong>Object-Oriented Programming (OOP)</strong> - Proficient in applying OOP principles in software development.
+        </li>
+        <li>
+          <strong>SQL</strong> - Proficient in designing and querying relational databases using SQL (Structured Query Language).
+        </li>
+        <li>
+          <strong>NoSQL</strong> - Experienced in working with NoSQL databases, including document-based, key-value.
+        </li>
+      </ul>
       <p>
         Languages I'm proficient in:
       </p>
@@ -239,26 +276,24 @@
       <div class="footer-content">
         <p>&copy; 2023 Tomasz Zbroszczyk</p>
       </div>
-      <script>
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', smoothScroll);
-        });
-
-        function smoothScroll(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          const yOffset = -60;
-
-          window.scroll({
-            top: targetElement.offsetTop + yOffset,
-            behavior: 'smooth'
-          });
-        }
-      </script>
-
     </footer>
+    <script>
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', smoothScroll);
+      });
+
+      function smoothScroll(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        const yOffset = -60;
+        window.scroll({
+          top: targetElement.offsetTop + yOffset,
+          behavior: 'smooth'
+        });
+      }
+    </script>
   </body>
 </html>
