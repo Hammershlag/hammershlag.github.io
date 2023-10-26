@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomasz Zbroszczyk - Личный портфолио</title>
+    <title>Томаш Збросчик - Личный портфолио</title>
     <link rel="stylesheet" href="../../css/stylesheet.css">
     <script type="text/javascript" src="../../javascript/script.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
@@ -239,5 +239,28 @@
         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">Подпишитесь на меня в Instagram</a></p>
     </div>
 </div>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2023 Томаш Збросчик</p>
+    </div>
+</footer>
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', smoothScroll);
+    });
+
+    function smoothScroll(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        const yOffset = -60;
+        window.scroll({
+            top: targetElement.offsetTop + yOffset,
+            behavior: 'smooth'
+        });
+    }
+</script>
 </body>
 </html>
