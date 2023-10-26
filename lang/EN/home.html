@@ -10,6 +10,16 @@
   </head>
   <body>
     <div class="header">
+      <div class="language-selector">
+        <select id="language-selector">
+          <option value="EN">English</option>
+          <option value="PL">Polish</option>
+          <option value="RU">Russian</option>
+          <option value="JP">Japanese</option>
+          <option value="ES">Spanish</option>
+          <option value="DE">German</option>
+        </select>
+      </div>
       <div class="logo"><a class="nav-link" href="#home"><img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo"></a></div>
       <a class="nav-link" href="#home">Home</a>
       <a class="nav-link" href="#about">About</a>
@@ -261,6 +271,16 @@
           behavior: 'smooth'
         });
       }
+
+      const languageSelector = document.getElementById('language-selector');
+
+      languageSelector.addEventListener('change', function () {
+        const selectedLanguage = this.value;
+        const currentPage = window.location.pathname.split('/').pop();
+
+        window.location.href = `/lang/${selectedLanguage}/${currentPage}`;
+      });
+
     </script>
   </body>
 </html>
