@@ -33,5 +33,5 @@ const projectMain = document.getElementById('project-main');
 
 projectMain.addEventListener('click', function () {
     var lan = window.location.pathname.split('/')[3];
-    window.location.href("/lang/"+lan+"/projects/projectsMain.html");
+    window.location.replace("https://hammershlag.github.io/lang/"+lan+"/projects/projectsMain.html");
 });

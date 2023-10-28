@@ -8,7 +8,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
-<div class="header" id="under-construction">
+<div class="header">
+    <div class="language-selector">
+        <select id="language-selector">
+            <option value="EN" selected="selected">English</option>
+            <option value="PL">Polish</option>
+            <option value="RU">Russian</option>
+            <option value="JP">Japanese</option>
+            <option value="ES">Spanish</option>
+            <option value="DE">German</option>
+        </select>
+    </div>
     <div class="logo">
         <a class="nav-link" href="https://hammershlag.github.io/home.html">
             <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
@@ -63,10 +73,5 @@
 </footer>
 
 <script type="text/javascript" src="../../../javascript/script.js"></script>
-<script>
-    if (document.getElementById("under-construction"))  {
-        window.location.href = "/lang/en/errors/underConstruction.html";
-    }
-</script>
 </body>
 </html>
