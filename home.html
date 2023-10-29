@@ -5,26 +5,12 @@
     <title>Redirect</title>
 </head>
 <body>
-    <div class="popup">
-                <span class="popuptext" id="myPopup">
-                    Selected page was unreachable or under construction.
-                    You have been redirected to english version.
-                </span>
-    </div>
-    <script>
-        var lan = navigator.language;
-        lan = lan.toLowerCase();
-        if (lan.length > 2) lan = lan.split("-")[1];
-        //window.location.replace("https://hammershlag.github.io/lang/"+lan+"/home.html");
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-        if (!lan.toLowerCase() == 'en') {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-            //window.location.href = `/lang/en/home.html`;
 
+    <script>
+        if (!lan.toLowerCase() == 'en') {
+            window.location.href = `/lang/en/home.html`;
         } else {
-            //window.location.href = `/lang/${lan}/home.html`;
+            window.location.href = `/lang/${lan}/home.html`;
         }
     </script>
 </body>
