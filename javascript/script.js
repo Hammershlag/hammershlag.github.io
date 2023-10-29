@@ -20,6 +20,18 @@ const languageSelector = document.getElementById('language-selector');
 languageSelector.addEventListener('change', function () {
     const selectedLanguage = this.value;
     const currentPage = window.location.pathname.split('/').pop();
+    if (!selectedLanguage.toLowerCase() == 'en') {
+        window.location.href = `/lang/en/${currentPage}`;
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    } else {
+        window.location.href = `/lang/${selectedLanguage.toLowerCase()}/${currentPage}`;
+    }
+});
 
-    window.location.href = `/lang/${selectedLanguage.toLowerCase()}/${currentPage}`;
+const projectMain = document.getElementById('project-main');
+
+projectMain.addEventListener('click', function () {
+    var lan = window.location.pathname.split('/')[3];
+    window.location.href("/lang/"+lan+"/projects/projectsMain.html");
 });

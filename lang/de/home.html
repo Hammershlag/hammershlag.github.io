@@ -8,7 +8,7 @@
         <link href="/photos/logo.png" rel="shortcut icon" type="image/x-icon"/>
     </head>
     <body>
-        <div class="header">
+        <div class="header" id="under-construction">
             <div class="language-selector">
                 <select id="language-selector">
                     <option value="EN">English</option>
@@ -289,5 +289,10 @@
             </div>
         </footer>
         <script type="text/javascript" src="../../javascript/script.js"></script>
+        <script>
+            if (document.getElementById("under-construction"))  {
+                window.location.href = "/lang/en/errors/underConstruction.html";
+            }
+        </script>
     </body>
 </html>
