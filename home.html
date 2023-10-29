@@ -5,8 +5,8 @@
     <title>Redirect</title>
 </head>
 <body>
-
     <script>
+        lan = window.navigator.language.split('-')[0].toLowerCase();
         if (!lan.toLowerCase() == 'en') {
             window.location.href = `/lang/en/home.html`;
         } else {
