@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Visualization</title>
+    <style>
+        .bar-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .bar {
+            width: 20px;
+            margin: 0 5px; /* Added 5px margin to create spacing */
+            background-color: blue;
+            border: 1px solid black; /* Added black border */
+        }
+
+        .compared {
+            background-color: red;
+        }
+
+        .sorted .bar {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="bar-container"></div>
+</div>
+<label for="numElements">Number of Elements:</label>
+<input type="number" id="numElements" min="1" value="10">
+<button onclick="startBubbleSort()">Generate and Sort</button>
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function startBubbleSort() {
+        const numElementsInput = document.getElementById('numElements');
+        const numElements = parseInt(numElementsInput.value);
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        const arr = [];
+        for (let i = 1; i <= numElements; i++) {
+            arr.push(i);
+        }
+
+        // Reset the color of all elements to blue
+        const bars = arr.map(value => createBar(value));
+        bars.forEach(bar => bar.style.backgroundColor = 'blue');
+        const barContainer = document.querySelector('.bar-container');
+        barContainer.innerHTML = '';
+        bars.forEach(bar => barContainer.appendChild(bar));
+
+        shuffleArray(arr);
+
+        barContainer.classList.remove('sorted');
+
+        let isSorted = false;
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = 0; j < arr.length - i - 1; j++) {
+                const bars = arr.map(value => createBar(value));
+
+                bars[j].classList.add('compared');
+                bars[j + 1].classList.add('compared');
+
+                barContainer.innerHTML = '';
+                bars.forEach(bar => barContainer.appendChild(bar));
+
+                await sleep(50);
+
+                bars[j].classList.remove('compared');
+                bars[j + 1].classList.remove('compared');
+
+                if (arr[j] > arr[j + 1]) {
+                    const temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
+                    barContainer.innerHTML = '';
+                    arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
+
+                    await sleep(50);
+                }
+            }
+
+            if (arr.slice().sort((a, b) => a - b).join('') === arr.join('')) {
+                isSorted = true;
+                break;
+            }
+        }
+
+        if (isSorted) {
+            barContainer.classList.add('sorted');
+        }
+    }
+
+    function createBar(height) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = height * 10 + 'px';
+        return bar;
+    }
+</script>
+</body>
+</html>
