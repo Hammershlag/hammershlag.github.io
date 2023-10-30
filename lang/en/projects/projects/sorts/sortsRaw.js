@@ -129,7 +129,6 @@ function selectionSort(arr) {
         }
 
         if (minIndex !== i) {
-            // Swap arr[i] and arr[minIndex]
             const temp = arr[i];
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
@@ -139,3 +138,53 @@ function selectionSort(arr) {
     return arr;
 }
 
+function cocktailShakerSort(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let swapped = true;
+
+    while (left < right && swapped) {
+        swapped = false;
+
+        for (let i = left; i < right; i++) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+                swapped = true;
+            }
+        }
+
+        right--;
+
+        for (let i = right; i > left; i--) {
+            if (arr[i] < arr[i - 1]) {
+                [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+                swapped = true;
+            }
+        }
+
+        left++;
+    }
+
+    return arr;
+}
+
+function gnomeSort(arr) {
+    const n = arr.length;
+    let index = 0;
+
+    while (index < n) {
+        if (index === 0) {
+            index++;
+        }
+
+        if (arr[index] >= arr[index - 1]) {
+            index++;
+        } else {
+            // Swap the elements
+            [arr[index], arr[index - 1]] = [arr[index - 1], arr[index]];
+            index--;
+        }
+    }
+
+    return arr;
+}
