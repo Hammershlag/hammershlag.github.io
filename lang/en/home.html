@@ -17,9 +17,15 @@
       if (isPortrait) {
         var wi = $(window).width();
         var hi = $(window).height();
-        viewport.setAttribute('content', 'width=device-width, initial-scale='+hi/wi);
+        value = Math.max(0, Math.min(1, hi/wi));
+
+        var x = Math.floor(value);
+        var y = Math.floor((value - x) * 10);
+
+        var result = x+ "." + y;
+        viewport.setAttribute('content', 'width=device-width, initial-scale='+result);
       } else {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0'); // Adjust the scale as needed
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
       }
     </script>
     <div class="header">
