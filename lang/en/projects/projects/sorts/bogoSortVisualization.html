@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Step Bogo Sort Visualization</title>
+  <style>
+    .bar-container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .bar {
+      width: 20px;
+      margin: 0 5px;
+      border: 1px solid black;
+    }
+
+    .bar.blue {
+      background-color: blue;
+    }
+
+    .bar.green {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div class="bar-container"></div>
+</div>
+<label for="numElements">Number of Elements:</label>
+<input type="number" id="numElements" min="1" value="10">
+<button onclick="startBogoSort()">Start Bogo Sort</button>
+<script>
+  let arr = []; // Initial array (will be generated based on user input)
+  let isSorting = false;
+  let interval;
+
+  const barContainer = document.querySelector('.bar-container');
+  const numElementsInput = document.getElementById('numElements');
+
+  // Initialize the visualization with default number of elements
+  generateArray(parseInt(numElementsInput.value));
+
+  function generateArray(numElements) {
+    arr = Array.from({ length: numElements }, (_, i) => i + 1);
+    shuffleArray(arr);
+    renderBars();
+  }
+
+  function renderBars() {
+    barContainer.innerHTML = '';
+    arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
+  }
+
+  function createBar(height) {
+    const bar = document.createElement('div');
+    bar.className = 'bar blue';
+    bar.style.height = height * 10 + 'px';
+    return bar;
+  }
+
+  function isSortedArray(array) {
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] < array[i - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function startBogoSort() {
+    if (isSorting) {
+      clearInterval(interval);
+      isSorting = false;
+      resetBarsColor();
+    } else {
+      const numElements = parseInt(numElementsInput.value);
+      generateArray(numElements);
+      isSorting = true;
+      interval = setInterval(stepBogoSort, 100);
+    }
+  }
+
+  function stepBogoSort() {
+    shuffleArray(arr);
+    renderBars();
+    if (isSortedArray(arr)) {
+      clearInterval(interval);
+      isSorting = false;
+      markBarsAsSorted();
+    }
+  }
+
+  function resetBarsColor() {
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach(bar => bar.classList.remove('green'));
+  }
+
+  function markBarsAsSorted() {
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach(bar => bar.classList.add('green'));
+  }
+</script>
+</body>
+</html>
