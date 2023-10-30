@@ -54,7 +54,6 @@
             arr.push(i);
         }
 
-        // Reset the color of all elements to blue
         const bars = arr.map(value => createBar(value));
         bars.forEach(bar => bar.style.backgroundColor = 'blue');
         const barContainer = document.querySelector('.bar-container');
@@ -63,7 +62,6 @@
 
         shuffleArray(arr);
 
-        // Remove the "sorted" class from barContainer
         barContainer.classList.remove('sorted');
 
         let i = 0;
@@ -72,7 +70,6 @@
             if (i === 0 || arr[i] >= arr[i - 1]) {
                 i++;
             } else {
-                // Visualize the comparison
                 const bars = arr.map(value => createBar(value));
 
                 bars[i].classList.add('compared');
@@ -86,7 +83,6 @@
                 bars[i].classList.remove('compared');
                 bars[i - 1].classList.remove('compared');
 
-                // Swap the bars
                 const temp = arr[i];
                 arr[i] = arr[i - 1];
                 arr[i - 1] = temp;
@@ -102,7 +98,6 @@
             }
         }
 
-        // Mark the array as sorted
         barContainer.classList.add('sorted');
     }
 
