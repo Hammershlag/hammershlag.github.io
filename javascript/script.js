@@ -28,10 +28,3 @@ languageSelector.addEventListener('change', function () {
         window.location.href = `/lang/${selectedLanguage.toLowerCase()}/${currentPage}`;
     }
 });
-
-const projectMain = document.getElementById('project-main');
-
-projectMain.addEventListener('click', function () {
-    var lan = window.location.pathname.split('/')[3];
-    window.location.href("/lang/"+lan+"/projects/projectsMain.html");
-});
