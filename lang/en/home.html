@@ -8,16 +8,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
   </head>
   <body>
-    <script>
-      const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+  <script>
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-      const viewport = document.getElementById('viewport');
-      if (isPortrait) {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=0.3');
-      } else {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-      }
-    </script>
+    const viewport = document.getElementById('viewport');
+    if (isPortrait) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+    } else {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+    }
+  </script>
     <div class="header">
       <div class="language-selector">
         <select id="language-selector">
@@ -40,12 +40,6 @@
       <a class="nav-link" href="#portfolio">Portfolio</a>
       <a class="nav-link" href="#testimonials">Testimonials</a>
       <a class="nav-link" href="#contact">Contact</a>
-    </div>
-    <div class="popup">
-            <span class="popuptext" id="myPopup">
-                Selected page was unreachable or under construction.
-                You have been redirected to english version.
-            </span>
     </div>
     <div class="section" id="home">
       <br><br>
@@ -118,52 +112,59 @@
 
     <div class="section" id="services">
       <h1>Services</h1>
-      <p>
-        I'm excited to offer a range of services tailored to your needs and interests. My passion and expertise in the field of Computer Science and Information Systems make me well-equipped to provide high-quality solutions for various IT-related challenges. Here's what I can do for you:
-      </p>
+      <div class="photo-text-section">
+        <div class="photo">
+          <img src="https://via.placeholder.com/300" alt="Tomasz Zbroszczyk">
+        </div>
+        <div class="text">
+          <p>
+            I'm excited to offer a range of services tailored to your needs and interests. My passion and expertise in the field of Computer Science and Information Systems make me well-equipped to provide high-quality solutions for various IT-related challenges. Here's what I can do for you:
+          </p>
 
-      <ol>
-        <li>
-          <h2>Software Development</h2>
-          <p>
-            Bringing your ideas to life through custom software solutions. Whether it's a web application, mobile app, or desktop software, I can develop the perfect solution for your needs.
-          </p>
-        </li>
-        <li>
-          <h2>Web Development</h2>
-          <p>
-            Creating visually appealing and functional websites that cater to your specific requirements. From simple personal sites to complex e-commerce platforms, I've got you covered.
-          </p>
-        </li>
-        <li>
-          <h2>IT Consultation</h2>
-          <p>
-            Offering expert advice and guidance on IT-related projects, from tech stack selection to project management. I'll help you make informed decisions and maximize your IT investments.
-          </p>
-        </li>
-        <li>
-          <h2>Code Review and Optimization</h2>
-          <p>
-            Ensuring the efficiency, security, and maintainability of your codebase. I'll review your code and provide valuable insights for improvement.
-          </p>
-        </li>
-        <li>
-          <h2>Technical Writing</h2>
-          <p>
-            Crafting well-researched, informative, and engaging technical content. Whether you need documentation, blog posts, or articles, I can help.
-          </p>
-        </li>
-        <li>
-          <h2>IT Training</h2>
-          <p>
-            Sharing my knowledge and expertise through personalized IT training sessions. From programming languages to software development methodologies, I'll help you build your IT skills.
-          </p>
-        </li>
-      </ol>
+          <ol>
+            <li>
+              <h2>Software Development</h2>
+              <p>
+                Bringing your ideas to life through custom software solutions. Whether it's a web application, mobile app, or desktop software, I can develop the perfect solution for your needs.
+              </p>
+            </li>
+            <li>
+              <h2>Web Development</h2>
+              <p>
+                Creating visually appealing and functional websites that cater to your specific requirements. From simple personal sites to complex e-commerce platforms, I've got you covered.
+              </p>
+            </li>
+            <li>
+              <h2>IT Consultation</h2>
+              <p>
+                Offering expert advice and guidance on IT-related projects, from tech stack selection to project management. I'll help you make informed decisions and maximize your IT investments.
+              </p>
+            </li>
+            <li>
+              <h2>Code Review and Optimization</h2>
+              <p>
+                Ensuring the efficiency, security, and maintainability of your codebase. I'll review your code and provide valuable insights for improvement.
+              </p>
+            </li>
+            <li>
+              <h2>Technical Writing</h2>
+              <p>
+                Crafting well-researched, informative, and engaging technical content. Whether you need documentation, blog posts, or articles, I can help.
+              </p>
+            </li>
+            <li>
+              <h2>IT Training</h2>
+              <p>
+                Sharing my knowledge and expertise through personalized IT training sessions. From programming languages to software development methodologies, I'll help you build your IT skills.
+              </p>
+            </li>
+          </ol>
 
-      <p>
-        Feel free to reach out if you're interested in any of these services or have specific requirements not listed here. I'm always open to new challenges and opportunities.
-      </p>
+          <p>
+            Feel free to reach out if you're interested in any of these services or have specific requirements not listed here. I'm always open to new challenges and opportunities.
+          </p>
+        </div>
+      </div>
     </div>
 
 
