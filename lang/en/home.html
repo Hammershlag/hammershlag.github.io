@@ -8,27 +8,33 @@
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
   </head>
   <body>
-    <script>
-      // Check the screen orientation
-      const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+  <script>
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-      // Set the initial scale based on the screen orientation
-      const viewport = document.getElementById('viewport');
-      if (isPortrait) {
-        var wi = $(window).width();
-        var hi = $(window).height();
-        value = Math.max(0, Math.min(1, hi/wi));
+    const viewport = document.getElementById('viewport');
 
-        var x = Math.floor(value);
-        var y = Math.floor((value - x) * 10);
+    if (isPortrait) {
+      var wi = $(window).width();
+      var hi = $(window).height();
+      value = Math.max(0, Math.min(1, hi / wi));
 
-        var result = x+ "." + y;
-        viewport.setAttribute('content', 'width=device-width, initial-scale='+result);
-      } else {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-      }
-    </script>
-    <div class="header">
+      var x = Math.floor(value);
+      var y = Math.floor((value - x) * 10);
+
+      var result = x + "." + y;
+
+      var newViewport = document.createElement('meta');
+      newViewport.setAttribute('name', 'viewport');
+      newViewport.setAttribute('content', 'width=device-width, initial-scale=' + result);
+
+      document.head.removeChild(viewport);
+      document.head.appendChild(newViewport);
+    } else {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+    }
+  </script>
+
+  <div class="header">
       <div class="language-selector">
         <select id="language-selector">
           <option value="EN" selected="selected">English</option>
