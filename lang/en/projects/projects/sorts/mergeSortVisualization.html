@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Visualization</title>
+    <style>
+        .bar-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .bar {
+            width: 20px;
+            margin: 0 5px;
+            background-color: blue;
+            border: 1px solid black;
+        }
+
+        .compared {
+            background-color: red;
+        }
+
+        .sorted .bar {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="bar-container"></div>
+</div>
+<label for="numElements">Number of Elements:</label>
+<input type="number" id="numElements" min="1" value="10">
+<button onclick="startMergeSort()">Generate and Sort</button>
+<script>
+    async function merge(arr, l, m, r) {
+        const n1 = m - l + 1;
+        const n2 = r - m;
+
+        const L = new Array(n1);
+        const R = new Array(n2);
+
+        for (let i = 0; i < n1; i++) {
+            L[i] = arr[l + i];
+        }
+        for (let i = 0; i < n2; i++) {
+            R[i] = arr[m + 1 + i];
+        }
+
+        let i = 0, j = 0, k = l;
+
+        while (i < n1 && j < n2) {
+            const bars = arr.map(value => createBar(value));
+            bars[l + i].classList.add('compared');
+            bars[m + 1 + j].classList.add('compared');
+
+            const barContainer = document.querySelector('.bar-container');
+            barContainer.innerHTML = '';
+            bars.forEach(bar => barContainer.appendChild(bar));
+
+            await sleep(50);
+
+            bars[l + i].classList.remove('compared');
+            bars[m + 1 + j].classList.remove('compared');
+
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    async function mergeSort(arr, l, r) {
+        if (l < r) {
+            const m = Math.floor((l + r) / 2);
+
+            await mergeSort(arr, l, m);
+            await mergeSort(arr, m + 1, r);
+            await merge(arr, l, m, r);
+
+            // Visualize the array after merging
+            visualizeArray(arr);
+            await sleep(50);
+        }
+    }
+
+    async function startMergeSort() {
+        const numElementsInput = document.getElementById('numElements');
+        const numElements = parseInt(numElementsInput.value);
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        const arr = [];
+        for (let i = 1; i <= numElements; i++) {
+            arr.push(i);
+        }
+
+        shuffleArray(arr);
+
+        const barContainer = document.querySelector('.bar-container');
+        barContainer.innerHTML = '';
+        visualizeArray(arr);
+
+        barContainer.classList.remove('sorted');
+
+        await mergeSort(arr, 0, arr.length - 1);
+
+        barContainer.classList.add('sorted');
+    }
+
+    function createBar(height) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = height * 10 + 'px';
+        return bar;
+    }
+
+    function visualizeArray(arr) {
+        const barContainer = document.querySelector('.bar-container');
+        barContainer.innerHTML = '';
+        for (const value of arr) {
+            const bar = createBar(value);
+            barContainer.appendChild(bar);
+        }
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge Sort Visualization</title>
+    <title>Selection Sort Visualization</title>
     <style>
         .bar-container {
             display: flex;
@@ -32,77 +32,13 @@
 </div>
 <label for="numElements">Number of Elements:</label>
 <input type="number" id="numElements" min="1" value="10">
-<button onclick="startMergeSort()">Generate and Sort</button>
+<button onclick="startSelectionSort()">Generate and Sort</button>
 <script>
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function merge(arr, l, m, r) {
-        const n1 = m - l + 1;
-        const n2 = r - m;
-
-        const L = new Array(n1);
-        const R = new Array(n2);
-
-        for (let i = 0; i < n1; i++) {
-            L[i] = arr[l + i];
-        }
-        for (let i = 0; i < n2; i++) {
-            R[i] = arr[m + 1 + i];
-        }
-
-        let i = 0, j = 0, k = l;
-
-        while (i < n1 && j < n2) {
-            const bars = arr.map(value => createBar(value));
-            bars[l + i].classList.add('compared');
-            bars[m + 1 + j].classList.add('compared');
-
-            const barContainer = document.querySelector('.bar-container');
-            barContainer.innerHTML = '';
-            bars.forEach(bar => barContainer.appendChild(bar));
-
-            await sleep(50);
-
-            bars[l + i].classList.remove('compared');
-            bars[m + 1 + j].classList.remove('compared');
-
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            } else {
-                arr[k] = R[j];
-                j++;
-            }
-
-            k++;
-        }
-
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-
-    async function mergeSort(arr, l, r) {
-        if (l < r) {
-            const m = Math.floor((l + r) / 2);
-
-            await mergeSort(arr, l, m);
-            await mergeSort(arr, m + 1, r);
-            await merge(arr, l, m, r);
-        }
-    }
-
-    async function startMergeSort() {
+    async function startSelectionSort() {
         const numElementsInput = document.getElementById('numElements');
         const numElements = parseInt(numElementsInput.value);
 
@@ -118,6 +54,7 @@
             arr.push(i);
         }
 
+        // Reset the color of all elements to blue
         const bars = arr.map(value => createBar(value));
         bars.forEach(bar => bar.style.backgroundColor = 'blue');
         const barContainer = document.querySelector('.bar-container');
@@ -126,10 +63,43 @@
 
         shuffleArray(arr);
 
+        // Remove the "sorted" class from barContainer
         barContainer.classList.remove('sorted');
 
-        await mergeSort(arr, 0, arr.length - 1);
+        for (let i = 0; i < arr.length - 1; i++) {
+            let minIndex = i;
+            for (let j = i + 1; j < arr.length; j++) {
+                // Visualize the comparison
+                const bars = arr.map(value => createBar(value));
 
+                bars[minIndex].classList.add('compared');
+                bars[j].classList.add('compared');
+
+                barContainer.innerHTML = '';
+                bars.forEach(bar => barContainer.appendChild(bar));
+
+                await sleep(50);
+
+                bars[minIndex].classList.remove('compared');
+                bars[j].classList.remove('compared');
+
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap the minimum element with the current element
+            const temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+
+            barContainer.innerHTML = '';
+            arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
+
+            await sleep(50);
+        }
+
+        // Mark the array as sorted
         barContainer.classList.add('sorted');
     }
 
