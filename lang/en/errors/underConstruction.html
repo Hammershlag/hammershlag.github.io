@@ -6,7 +6,6 @@
     <title>Tomasz Zbroszczyk - Personal Portfolio</title>
     <link rel="stylesheet" href="../../../css/stylesheet.css">
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
-    <meta http-equiv="refresh" content="10;url=https://hammershlag.github.io/lang/en/home.html" />
 </head>
 <body>
 <div class="header">
@@ -18,9 +17,28 @@
 </div>
 
 <div class="section" id="construction">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    If you see this page, it means that the page you were looking for is under construction or unreachable. You will be redirected to the english home page in 10 seconds.
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="photo-text-section">
+        <div class="text" >
+            <script>
+                function updateCountdown() {
+                    var countdownElement = document.getElementById("countdown");
+                    var countdown = parseInt(countdownElement.textContent);
+
+                    if (countdown > 0) {
+                        countdown--;
+                        countdownElement.textContent = countdown;
+                        setTimeout(updateCountdown, 1000);
+                    } else {
+                        window.location.href = "/lang/en/home.html";
+                    }
+                }
+
+                window.onload = updateCountdown;
+            </script>
+
+            If you see this page, it means that the page you were looking for is under construction or unreachable. You will be redirected to the english home page in <a class="countdown" id="countdown">10</a> seconds.
+        </div>
+    </div>
 </div>
 
 <div class="section" id="contact">
