@@ -15,7 +15,9 @@
       // Set the initial scale based on the screen orientation
       const viewport = document.getElementById('viewport');
       if (isPortrait) {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=0.2');
+        var wi = $(window).width();
+        var hi = $(window).height();
+        viewport.setAttribute('content', 'width=device-width, initial-scale='+hi/wi);
       } else {
         viewport.setAttribute('content', 'width=device-width, initial-scale=1.0'); // Adjust the scale as needed
       }
