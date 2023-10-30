@@ -9,16 +9,21 @@
   </head>
   <body>
   <script>
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+    function setViewportScale() {
+      const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+      const viewport = document.getElementById('viewport');
 
-    const viewport = document.getElementById('viewport');
-    if (isPortrait) {
-      viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
-    } else {
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      if (isPortrait) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+      } else {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      }
     }
+
+    window.addEventListener('load', setViewportScale);
   </script>
-    <div class="header">
+
+  <div class="header">
       <div class="language-selector">
         <select id="language-selector">
           <option value="EN" selected="selected">English</option>
