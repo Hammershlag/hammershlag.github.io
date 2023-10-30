@@ -10,7 +10,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.125rem; /* Relative font size */
+    font-size: 1.125rem;
     color: #fff;
     font-weight: bold;
 }
@@ -50,7 +50,7 @@ body {
 }
 
 .logo {
-    font-size: 16px;
+    font-size: 1.125rem;
     font-weight: bold;
     display: flex;
     align-items: center;
