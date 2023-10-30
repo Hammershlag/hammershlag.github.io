@@ -10,9 +10,18 @@
 <body>
 <div class="header"  id="under-construction">
     <script>
-        if (document.getElementById('under-construction')) {
-            window.location.href = '/lang/en/errors/underConstruction.html';
+        function setViewportScale() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const viewport = document.getElementById('viewport');
+
+            if (isPortrait) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            }
         }
+
+        window.addEventListener('load', setViewportScale);
     </script>
     <div class="language-selector">
         <select id="language-selector">
@@ -32,45 +41,50 @@
 </div>
 
 <div class="section" id="projects">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    This section is under construction, and it's dedicated to my projects.
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
-
-<div class="section" id="contact">
-    <h1>Contact</h1>
-    <p>
-        Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
-    </p>
-
-    <div class="contact-info">
-        <div class="logo">
-            <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
-                <img src="../../../photos/logos/facebook.png" class="logo" alt="Facebook">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
-                <img src="../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://github.com/Hammershlag" target="_blank">
-                <img src="../../../photos/logos/github.png" class="logo" alt="Github">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
-                <img src="../../../photos/logos/instagram.png" class="logo" alt="Instagram">
-            </a>
-        </div>
-        <div class="logo">
-            <img src="../../../photos/logos/email.png" class="logo" alt="Email: ">
-            &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+    <div class="photo-text-section">
+        <div class="text">
+            This section is under construction, and it's dedicated to my projects.
         </div>
     </div>
 </div>
 
+<div class="section" id="contact">
+    <h1>Contact</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>
+                Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+            </p>
+
+            <div class="contact-info">
+                <div class="logo">
+                    <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                        <img src="../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                        <img src="../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://github.com/Hammershlag" target="_blank">
+                        <img src="../../../photos/logos/github.png" class="logo" alt="Github">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                        <img src="../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                    </a>
+                </div>
+                <div class="logo">
+                    <img src="../../../photos/logos/email.png" class="logo" alt="Email: ">
+                    &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <footer>
     <div class="footer-content">
         <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>

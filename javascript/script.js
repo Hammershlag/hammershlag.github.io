@@ -22,8 +22,6 @@ languageSelector.addEventListener('change', function () {
     const currentPage = window.location.pathname.split('/').pop();
     if (!selectedLanguage.toLowerCase() == 'en') {
         window.location.href = `/lang/en/${currentPage}`;
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
     } else {
         window.location.href = `/lang/${selectedLanguage.toLowerCase()}/${currentPage}`;
     }

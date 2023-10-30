@@ -6,9 +6,22 @@
     <title>Tomasz Zbroszczyk - Personal Portfolio</title>
     <link rel="stylesheet" href="../../../css/stylesheet.css">
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
-    <meta http-equiv="refresh" content="10;url=https://hammershlag.github.io/lang/en/home.html" />
 </head>
 <body>
+<script>
+    function setViewportScale() {
+        const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+        const viewport = document.getElementById('viewport');
+
+        if (isPortrait) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+        } else {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+        }
+    }
+
+    window.addEventListener('load', setViewportScale);
+</script>
 <div class="header">
     <div class="logo">
         <a class="nav-link" href="https://hammershlag.github.io/home.html">
@@ -18,41 +31,64 @@
 </div>
 
 <div class="section" id="construction">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    If you see this page, it means that the page you were looking for is under construction or unreachable. You will be redirected to the english home page in 10 seconds.
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="photo-text-section">
+        <div class="text" >
+            <script>
+                function updateCountdown() {
+                    var countdownElement = document.getElementById("countdown");
+                    var countdown = parseInt(countdownElement.textContent);
+
+                    if (countdown > 0) {
+                        countdown--;
+                        countdownElement.textContent = countdown;
+                        setTimeout(updateCountdown, 1000);
+                    } else {
+                        window.location.href = "/lang/en/home.html";
+                    }
+                }
+
+                window.onload = updateCountdown;
+            </script>
+
+            If you see this page, it means that the page you were looking for is under construction or unreachable. You will be redirected to the english home page in <a class="countdown" id="countdown">10</a> seconds.
+        </div>
+    </div>
 </div>
 
 <div class="section" id="contact">
     <h1>Contact</h1>
-    <p>
-        Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
-    </p>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>
+                Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+            </p>
 
-    <div class="contact-info">
-        <div class="logo">
-            <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
-                <img src="../../../photos/logos/facebook.png" class="logo" alt="Facebook">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
-                <img src="../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://github.com/Hammershlag" target="_blank">
-                <img src="../../../photos/logos/github.png" class="logo" alt="Github">
-            </a>
-        </div>
-        <div class="logo">
-            <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
-                <img src="../../../photos/logos/instagram.png" class="logo" alt="Instagram">
-            </a>
-        </div>
-        <div class="logo">
-            <img src="../../../photos/logos/email.png" class="logo" alt="Email: ">
-            &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+            <div class="contact-info">
+                <div class="logo">
+                    <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                        <img src="../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                        <img src="../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://github.com/Hammershlag" target="_blank">
+                        <img src="../../../photos/logos/github.png" class="logo" alt="Github">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                        <img src="../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                    </a>
+                </div>
+                <div class="logo">
+                    <img src="../../../photos/logos/email.png" class="logo" alt="Email: ">
+                    &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+                </div>
+            </div>
         </div>
     </div>
 </div>
