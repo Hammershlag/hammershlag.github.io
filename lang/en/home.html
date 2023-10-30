@@ -295,7 +295,7 @@
 
         const viewport = document.getElementById('viewport');
 
-        if (!isPortrait) {
+        if (isPortrait) {
           var wi = $(window).width();
           var hi = $(window).height();
           value = Math.max(0, Math.min(1, hi / wi));
