@@ -6,9 +6,18 @@
     <title>Tomasz Zbroszczyk - Personal Portfolio</title>
     <link rel="stylesheet" href="../../css/stylesheet.css">
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
-    <script src="../../javascript/jquery.min.js"></script>
   </head>
   <body>
+    <script>
+      const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+      const viewport = document.getElementById('viewport');
+      if (isPortrait) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=0.3');
+      } else {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      }
+    </script>
     <div class="header">
       <div class="language-selector">
         <select id="language-selector">
@@ -289,36 +298,5 @@
     </footer>
 
     <script type="text/javascript" src="../../javascript/script.js"></script>
-    <script>
-      $(document).ready(function() {
-        const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
-        const viewport = document.getElementById('viewport');
-
-        if (isPortrait) {
-          var wi = $(window).width();
-          var hi = $(window).height();
-          value = Math.max(0, Math.min(1, hi / wi));
-          console.log(value);
-          console.log(wi);
-          console.log(hi);
-
-          var x = Math.floor(value);
-          var y = Math.floor((value - x) * 10);
-
-          var result = x + "." + y;
-          console.log(result);
-
-          var newViewport = document.createElement('meta');
-          newViewport.setAttribute('name', 'viewport');
-          newViewport.setAttribute('content', 'width=device-width, initial-scale=' + result);
-
-          document.head.removeChild(viewport);
-          document.head.appendChild(newViewport);
-        } else {
-          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-        }
-      });
-    </script>
   </body>
 </html>
