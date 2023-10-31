@@ -116,5 +116,95 @@ async function partition(arr, low, high) {
     return i + 1;
 }
 
+function selectionSort(arr) {
+    const n = arr.length;
 
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
 
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex !== i) {
+            const temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+
+    return arr;
+}
+
+function cocktailShakerSort(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let swapped = true;
+
+    while (left < right && swapped) {
+        swapped = false;
+
+        for (let i = left; i < right; i++) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+                swapped = true;
+            }
+        }
+
+        right--;
+
+        for (let i = right; i > left; i--) {
+            if (arr[i] < arr[i - 1]) {
+                [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+                swapped = true;
+            }
+        }
+
+        left++;
+    }
+
+    return arr;
+}
+
+function gnomeSort(arr) {
+    const n = arr.length;
+    let index = 0;
+
+    while (index < n) {
+        if (index === 0) {
+            index++;
+        }
+
+        if (arr[index] >= arr[index - 1]) {
+            index++;
+        } else {
+            [arr[index], arr[index - 1]] = [arr[index - 1], arr[index]];
+            index--;
+        }
+    }
+
+    return arr;
+}
+
+function dutchNationalFlagSort(arr) {
+    let low = 0;
+    let mid = 0;
+    let high = arr.length - 1;
+
+    while (mid <= high) {
+        if (arr[mid] === 0) {
+            [arr[low], arr[mid]] = [arr[mid], arr[low]];
+            low++;
+            mid++;
+        } else if (arr[mid] === 1) {
+            mid++;
+        } else {
+            [arr[mid], arr[high]] = [arr[high], arr[mid]];
+            high--;
+        }
+    }
+
+    return arr;
+}
