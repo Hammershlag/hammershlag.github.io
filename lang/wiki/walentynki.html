@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #ffcccc;
+      position: relative;
+    }
+    #container {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #box {
+      width: 50vw;
+      height: 50vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 2px solid #ff6699;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .button-container {
+      white-space: nowrap;
+    }
+    .button {
+      padding: 20px 40px;
+      font-size: 24px;
+      cursor: pointer;
+      margin: 20px;
+      transition: all 0.3s ease;
+      background-color: #ff6699;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+    .button:hover {
+      background-color: #ff4d94;
+    }
+    h2 {
+      font-size: 36px;
+      color: #ff4d94;
+    }
+    #message {
+      display: none;
+      font-size: 48px;
+      font-weight: bold;
+      color: #ff4d94;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .heart {
+      position: absolute;
+      background-image: url('https://emojicdn.elk.sh/💖');
+      background-size: contain;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(100vh);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h2>Will you be my valentine?</h2>
+  <div id="box">
+    <div class="button-container">
+      <button id="yesBtn" class="button">Yes</button>
+      <button id="noBtn" class="button">No</button>
+    </div>
+  </div>
+</div>
+<div id="message">Yeeeeey</div>
+<div id="heartContainer"></div>
+
+<script>
+  let noClickCount = 0;
+
+  document.getElementById('yesBtn').onclick = function() {
+    document.getElementById('message').style.display = "block";
+    document.getElementById('container').style.display = "none";
+    for (let i = 0; i < 200; i++) {
+      createHeart();
+    }
+  };
+
+  const noBtn = document.getElementById('noBtn');
+  const box = document.getElementById('box');
+  const heartContainer = document.getElementById('heartContainer');
+
+  for (let i = 0; i < 10; i++) {
+    createHeart();
+  }
+
+  noBtn.onclick = function() {
+    noClickCount++;
+    if (noClickCount <= 10) {
+      for (let i = 0; i < noClickCount * 2; i++) {
+        createHeart();
+      }
+      this.textContent = getNoButtonText(noClickCount);
+      this.style.fontSize = `${24 - noClickCount}px`;
+    }
+
+    if (noClickCount === 10) {
+      moveButtonWithinBox();
+      this.removeEventListener('click', arguments.callee);
+    }
+  };
+
+
+  noBtn.addEventListener('mouseenter', function() {
+    if (noClickCount >= 10) {
+      moveButtonWithinBox();
+    }
+  });
+
+  function moveButtonWithinBox() {
+    const maxX = box.offsetWidth - noBtn.offsetWidth;
+    const maxY = box.offsetHeight - noBtn.offsetHeight;
+
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = `${newX}px`;
+    noBtn.style.top = `${newY}px`;
+  }
+
+  function getNoButtonText(clickCount) {
+    switch (clickCount) {
+      case 1:
+        return 'No?';
+      case 2:
+        return "Don't want?";
+      case 3:
+        return 'You sure?';
+      case 4:
+        return 'For sure?';
+      case 5:
+        return 'Maybe click another button';
+      case 6:
+        return 'Just maybe';
+      case 7:
+        return 'Please';
+      case 8:
+        return 'PLEASE';
+      case 9:
+        return 'P L E A S E';
+      case 10:
+        return ':(';
+      default:
+        return 'No';
+    }
+  }
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * (window.innerHeight - 100);
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
+    const size = Math.floor(Math.random() * 80) + 20;
+    heart.style.width = `${size}px`;
+    heart.style.height = `${size}px`;
+    const animationDuration = Math.random() * 10 + 5;
+    heart.style.animationDuration = `${animationDuration}s`;
+    heartContainer.appendChild(heart);
+    heart.addEventListener('animationiteration', () => {
+      heart.remove();
+      createHeart();
+    });
+  }
+</script>
+
+</body>
+</html>
