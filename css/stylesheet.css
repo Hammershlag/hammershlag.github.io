@@ -28,11 +28,11 @@ body {
     justify-content: center;
     align-content: center;
 }
-#home, #services, #testimonials {
+#home, #services, #testimonials , #projects, #important, #simpleShop{
     background-color: #222222;
 }
 
-#about, #portfolio, #contact {
+#about, #portfolio, #contact, #data, #simpleShopTitle {
     background-color: #444444;
 }
 
@@ -108,6 +108,7 @@ footer {
     text-align: center; /* Center the image horizontally */
     display: flex;
     justify-content: center; /* Center the image vertically */
+    margin: 10px;
 }
 
 img {
