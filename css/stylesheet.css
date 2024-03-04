@@ -64,6 +64,7 @@ body {
 
 
 .section {
+
     padding: 20px;
     padding-top: 80px;
     margin-top: 0;
@@ -108,7 +109,7 @@ footer {
     text-align: center; /* Center the image horizontally */
     display: flex;
     justify-content: center; /* Center the image vertically */
-    margin: 10px;
+    margin: 5%;
 }
 
 img {
