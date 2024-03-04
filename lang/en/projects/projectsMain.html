@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
-<div class="header"  id="">
+<div class="header">
     <script>
         function setViewportScale() {
             const isPortrait = window.matchMedia("(orientation: portrait)").matches;
@@ -23,28 +23,26 @@
 
         window.addEventListener('load', setViewportScale);
     </script>
-    <div class="language-selector">
-        <select id="language-selector">
-            <option value="EN" selected="selected">English</option>
-            <option value="PL">Polish</option>
-            <option value="RU">Russian</option>
-            <option value="JP">Japanese</option>
-            <option value="ES">Spanish</option>
-            <option value="DE">German</option>
-        </select>
-    </div>
     <div class="logo">
         <a class="nav-link" href="https://hammershlag.github.io/home.html">
             <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
         </a>
     </div>
 </div>
-
+<div class="section" id="about">
+    As for now this page doesn't contain all my projects as I do not have enough time to set it all up.
+    But if you want to read about my projects you can either read about them here or visit my
+    <a href="https://github.com/Hammershlag" style="text-decoration-line: underline">GitHub</a>.
+    <br><br>Below you can find few of the algorithms that I tried to visualize, although with different success as
+    different algorithms (in my case sorting algorithms) hava different visualization techniques. For example merge
+    sort will not be as easy to visualize as bubble sort.
+</div>
 <div class="section" id="projects">
     <h1>Projects:</h1>
     <div class="photo-text-section">
         <div class="text">
             <li>
+                Algorithms:
                 <ul><a href="projects/sorts/bogoSortVisualization.html">Bogo Sort</a> </ul>
                 <ul><a href="projects/sorts/bubbleSortVisualization.html">Bubble Sort</a> </ul>
                 <ul><a href="projects/sorts/cocktailShakerSortVisualization.html">Cocktail Shaker Sort (Bidirectional Bubble Sort)</a> </ul>
@@ -54,6 +52,9 @@
                 <ul><a href="projects/sorts/mergeSortVisualization.html">Merge Sort</a> </ul>
                 <ul><a href="projects/sorts/quickSortVisualization.html">Quick Sort</a> </ul>
                 <ul><a href="projects/sorts/selectionSortVisualization.html">Selection Sort</a> </ul>
+            </li>
+            <li>
+                <a href="projects/simpleShop.html" style="text-decoration-line: underline">SimpleShop</a>
             </li>
         </div>
     </div>
@@ -102,6 +103,6 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../../../javascript/script.js"></script>
+<script type="text/javascript" src="../../../../javascript/script.js"></script>
 </body>
 </html>

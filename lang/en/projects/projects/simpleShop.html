@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Zbroszczyk - Personal Portfolio</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+<body>
+<div class="header"  id="">
+    <script>
+        function setViewportScale() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const viewport = document.getElementById('viewport');
+
+            if (isPortrait) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            }
+        }
+
+        window.addEventListener('load', setViewportScale);
+    </script>
+    <div class="logo">
+        <a class="nav-link" href="https://hammershlag.github.io/home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+</div>
+
+<!-- SimpleShop Project Section -->
+<div class="section" id="simpleShopTitle">
+    <h1>SimpleShop: My Android Development Journey</h1>
+</div>
+
+<div class="section" id="simpleShop">
+    <p>
+        <h2>Introduction</h2>
+        Several years ago, I embarked on a journey to learn Android app development, culminating in the creation of SimpleShop, an e-commerce application designed to reinforce my programming and design skills.
+        Even though it may look like a simple application, I tried adding everything that came into my mind. Starting from logging it or registering, through email verification to the things like primitive credit card verification methods.
+        It is easier to just look at my code than for me to explain everything, but I will try my best to do so.
+    </p>
+    <p>
+        <h2>Loading</h2>
+        Let's start with loading. When the app was opened it first entered loading stage where everything such as
+        user's decision to stay logged in or not and then sending them to appropriate page depending on their decision
+        and even their 'ROLE'. While on this stage, I also asked user for any missing permissions.
+    </p>
+    <p>
+        <h2>Login</h2>
+        I enabled users to login from the users stored in database. You were able to go to 'Registration' page if you didn't have an account yet,
+        but if you had one you could just log in. Obviously if you remembered your password. If you didn't, I added functionality to reset your password using verification code
+        sent to your email address.
+    </p>
+    <p>
+        <h2>Register</h2>
+        Next thing is a registration page. Only thing I added to casual registration was email verification by sending
+        verification code to the given email and if the entered code was correct, the application added user to the database with a default role.
+    </p>
+    <p>
+        <h2>Storing Data</h2>
+        If I wanted to store some data and be sure that it was accessible from all pages, I added it to my class 'Data' that only
+        contained static field. It might have not been the smartest thing to do but at that time it was the only thing I came up with.
+    </p>
+</div>
+<div class="section" id="data">
+    <div class="photo-text-section">
+        <div class="text">
+            <h2>Key Features</h2>
+            <ul>
+                <li>User Authentication: Login and registration functionalities.</li>
+                <li>User Roles: Distinct roles for admin and users, controlling access and permissions.</li>
+                <li>Product Management: Users can submit products for admin approval before they are listed.</li>
+                <li>Local Data Storage: Utilizes SQLite for data management and SharedPreferences for settings.</li>
+                <li>User Verification: After registration you get verification code on your email</li>
+            </ul>
+
+            <h2>Challenges and Learning</h2>
+            <p>Although SimpleShop was one of my early projects and did not fully adhere to Object-Oriented Design principles or security best practices, it was a significant step in my development journey, teaching me valuable lessons in Android app development, local data storage, and UI/UX considerations.
+            It was one of the projects that I didn't have to extend by force. All the ideas came to my mind before I was finished with previous ones</p>
+
+            <p>For more details on SimpleShop and other projects, visit my <a href="https://github.com/Hammershlag/SimpleShop" style="text-decoration-line: underline">GitHub</a>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="important">
+    <h1>Important</h1>
+    <ul>
+        <li>Language: Java</li>
+        <li>Time: September 2021</li>
+    </ul>
+    At that time I was not the best programmer, and I was not very proficient at using git so please take that into account while looking at this project on my GitHub.
+</div>
+
+<!-- Contact Section -->
+<div class="section" id="contact">
+    <h1>Contact</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>Feel free to reach out to me for questions or inquiries via email or social media. While this website supports multiple languages, I prefer communication in English.</p>
+            <div class="contact-info">
+                <!-- Social Links and Email -->
+                <div class="logo"><a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                    <img src="../../../../photos/logos/facebook.png" alt="Facebook"></a>
+                </div>
+                <div class="logo"><a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                    <img src="../../../../photos/logos/linkedin.png" alt="LinkedIn"></a>
+                </div>
+                <div class="logo"><a href="https://github.com/Hammershlag" target="_blank">
+                    <img src="../../../../photos/logos/github.png" alt="GitHub"></a>
+                </div>
+                <div class="logo"><a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                    <img src="../../../../photos/logos/instagram.png" alt="Instagram"></a>
+                </div>
+                <div class="logo"><img src="../../../../photos/logos/email.png" alt="Email">
+                    tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="../../../../javascript/script.js"></script>
+</body>
+</html>
