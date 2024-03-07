@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quick Sort Visualization</title>
+  <title>Wizualizacja Sortowania Szybkiego</title>
   <style>
     .bar-container {
       display: flex;
@@ -54,9 +54,9 @@
   <div class="section" id="container">
     <div class="bar-container"></div>
   </div>
-  <label for="numElements">Number of Elements:</label>
+  <label for="numElements">Liczba Elementów:</label>
   <input type="number" id="numElements" min="1" value="10">
-  <button onclick="startQuickSort()">Generate and Sort</button>
+  <button onclick="startQuickSort()">Generuj i Sortuj</button>
   <script>
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -107,7 +107,7 @@
       let i = low - 1;
 
       for (let j = low; j < high; j++) {
-        // Visualize the comparison
+        // Wizualizacja porównania
         const bars = arr.map(value => createBar(value));
 
         bars[j].classList.add('pivot');
@@ -158,11 +158,11 @@
   </script>
 </div>
 <div class="section" id="contact">
-  <h1>Contact</h1>
+  <h1>Kontakt</h1>
   <div class="photo-text-section">
     <div class="text">
       <p>
-        Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+        Skontaktuj się ze mną, jeśli masz jakiekolwiek pytania. Możesz się ze mną skontaktować za pomocą e-maila lub mediów społecznościowych. Nawet jeśli widzisz tę stronę w innych językach, mój preferowany język komunikacji to angielski.
       </p>
 
       <div class="contact-info">
@@ -173,7 +173,7 @@
         </div>
         <div class="logo">
           <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
-            <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+            <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkedIn">
           </a>
         </div>
         <div class="logo">
@@ -194,7 +194,6 @@
     </div>
   </div>
 </div>
-
 <footer>
   <div class="footer-content">
     <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>

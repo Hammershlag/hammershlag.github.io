@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Zbroszczyk - Portfolio Osobiste</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a class="nav-link" href="../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+</div>
+<div class="section" id="a0">
+    <h1>QuestionGame - Gra Klient-Serwer</h1>
+</div>
+<div class="section" id="a1">
+    <h1>Wprowadzenie</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            W zeszłym roku (2023) natrafiłem na grę o nazwie "The Test". To gra, w której dwóch graczy wymienia się pytaniami. Na przykład gracz 1 odpowiada na dwa pierwsze pytania, wybierając odpowiedzi, które najbardziej mu odpowiadają. Następnie gracz 2 próbuje odgadnąć, jakie odpowiedzi wybrał gracz 1, i jeśli odgadnie poprawnie, otrzymuje 1 punkt za każdą poprawną odpowiedź. Potem gracz 2 odpowiada na dwa nowe pytania. W kolejnej rundzie gracz 1 najpierw dowiaduje się, co gracz 2 myślał, że on odpowie, a potem gra toczy się według wcześniej opisanego scenariusza. Wtedy pomyślałem, że byłoby fajnie spróbować zrobić taką grę i że byłoby to dobre ćwiczenie z sieci w Javie.
+        </div>
+    </div>
+</div>
+<div class="section" id="a2">
+    <h1>Dokumentacja</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            Kiedy tworzyłem ten projekt, nie rósł on tak, jak się spodziewałem, ponieważ nie rosł pod względem liczby plików, ale rosła liczba komend, które musiałem pamiętać i co one robią, więc pomyślałem, że fajnie by było udokumentować ten projekt, aby gdybym kiedyś do niego wrócił, wiedział, co się dzieje (przynajmniej jeśli chodzi o logikę programu). Spędziłem dużo czasu, próbując to udokumentować, zgodnie z JavaDoc, dodając kilka plików README.md i teraz, patrząc na to, było to bardzo dobre pomysł, ponieważ każda funkcja ma opis, co robi i co robią jej parametry, nawet po kilku miesiącach jest o wiele łatwiej wrócić do tego, co miałem wtedy na myśli.
+        </div>
+    </div>
+</div>
+<div class="section" id="a3">
+    <h1>Pliki Konfiguracyjne</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            Kiedy ten projekt się rozwijał, chciałem przetestować wiele jego funkcji, i z czasem okazało się, że musiałem zmieniać zbyt wiele rzeczy w moim 'main', aby go przetestować, więc wpadłem na pomysł, aby zrobić mój plik konfiguracyjny. Zarówno 'Serwer', jak i 'Klient' najpierw zainicjowali obsługę konfiguracji, aby dostosować niektóre parametry, co ułatwiło mi konfigurację i testowanie.
+        </div>
+    </div>
+</div>
+<div class="section" id="a4">
+    <h1>Strona Klienta</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            Strona klienta musiała wykonać tylko kilka czynności. 1. Stworzyć kilku klientów. 2. Wysłać wiadomości do serwera z wybranego klienta. Kiedy dodawałem więcej funkcji do serwera, potrzebowałem także sposobu automatyzacji testowania nowych poleceń, więc dodałem to do klienta. Chociaż jest to bardzo podstawowe, przyspieszyło to mój proces testowania komend. Klient musiał obsłużyć tylko kilka rodzajów wiadomości od serwera.
+        </div>
+    </div>
+</div>
+<div class="section" id="a5">
+    <h1>Strona Serwera</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            Strona serwera tego projektu była znacznie bardziej skomplikowana niż strona klienta, ponieważ musiała obsłużyć wielu klientów i możliwe, że wiele wiadomości jednocześnie, gdzie każda wiadomość mogła prosić serwer o coś innego do zrobienia. Jest to podstawowy serwer gniazdowy w Javie. Obsługuje przetwarzanie wiadomości, takie jak pobieranie użytkownika lub pytania z bazy danych lub ich dodawanie do niej.
+        </div>
+    </div>
+</div>
+<div class="section" id="a6">
+    <h1>Przechowywanie Danych</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            Wcześniej uczyłem się korzystać z SQL i NoSQL, więc zdecydowałem się nie używać ich, ale używać prostego przechowywania plików. Po prostu wszystko zapisywałem do pliku i z powrotem i nazywałem to bazą danych. Wiedziałem od początku, że konwencjonalne bazy danych SQL, a nawet NoSQL (które są dużo wolniejsze niż SQL), będą szybsze niż to, ale myślałem także, że będzie to fajne, aby zaimplementować wszystko samemu.
+        </div>
+    </div>
+</div>
+<div class="section" id="a7">
+    Język używany w tym projekcie to Java. Został stworzony w październiku 2023 roku. Jeśli chcesz dowiedzieć się więcej o tym projekcie, gorąco zachęcam do odwiedzenia mojego GitHuba i samodzielnego zbadania kodu i dokumentacji, ponieważ nie mogę umieścić wszystkiego tutaj. Tutaj masz przekierowanie do mojego GitHuba: <a href="https://github.com/Hammershlag/QuestionGame" style="text-decoration-line: underline">GitHub</a>.
+</div>
+<div class="section" id="a8">
+</div>
+<div class="section" id="contact">
+    <h1>Kontakt</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>
+                Nie krępuj się kontaktować ze mną w przypadku pytań lub zapytań. Możesz się ze mną skontaktować za pośrednictwem e-maila lub mediów społecznościowych. Chociaż ta strona obsługuje wiele języków, preferuję komunikację w języku angielskim.
+            </p>
+            <div class="contact-info">
+                <div class="logo">
+                    <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                        <img src="../../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                        <img src="../../../../photos/logos/linkedin.png" class="logo" alt="LinkedIn">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://github.com/Hammershlag" target="_blank">
+                        <img src="../../../../photos/logos/github.png" class="logo" alt="Github">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                        <img src="../../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                    </a>
+                </div>
+                <div class="logo">
+                    <img src="../../../../photos/logos/email.png" class="logo" alt="Email: ">
+                    &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
+</body>
+</html>
