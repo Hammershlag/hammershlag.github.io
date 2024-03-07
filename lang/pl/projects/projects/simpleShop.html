@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Zbroszczyk - Portfolio Osobiste</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+<body>
+<div class="header"  id="">
+    <script>
+        function setViewportScale() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const viewport = document.getElementById('viewport');
+
+            if (isPortrait) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            }
+        }
+
+        window.addEventListener('load', setViewportScale);
+    </script>
+    <div class="logo">
+        <a class="nav-link" href="../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+</div>
+
+<!-- Sekcja projektu SimpleShop -->
+<div class="section" id="simpleShopTitle">
+    <h1>SimpleShop: Moja Przygoda z Tworzeniem Aplikacji na Androida</h1>
+</div>
+
+<div class="section" id="simpleShop">
+    <p>
+    <h2>Wprowadzenie</h2>
+    Kilka lat temu rozpocząłem przygodę z nauką tworzenia aplikacji na Androida, co zaowocowało stworzeniem SimpleShop, aplikacji e-commerce mającej na celu wzmocnienie moich umiejętności programistycznych i projektowych.
+    Mimo że może wyglądać jak prosta aplikacja, starałem się dodać do niej wszystko, co przychodziło mi do głowy. Zacząłem od możliwości logowania się lub rejestracji, aż po weryfikację adresu e-mail i prymitywne metody weryfikacji kart kredytowych.
+    Łatwiej jest po prostu obejrzeć mój kod niż wyjaśniać wszystko, ale postaram się jak najlepiej to zrobić.
+    </p>
+    <p>
+    <h2>Ładowanie</h2>
+    Zacznijmy od ładowania. Kiedy aplikacja była otwierana, najpierw przechodziła przez etap ładowania, gdzie wszystko takie jak
+    decyzja użytkownika o pozostaniu zalogowanym czy nie i następnie przekierowanie ich na odpowiednią stronę w zależności od ich decyzji
+    oraz ich 'ROLE'. W tym czasie, również pytałem użytkownika o brakujące uprawnienia.
+    </p>
+    <p>
+    <h2>Logowanie</h2>
+    Umożliwiłem użytkownikom logowanie się na konta przechowywane w bazie danych. Można było przejść do strony "Rejestracja", jeśli nie posiadało się jeszcze konta,
+    ale jeśli już je posiadałeś, mogłeś się po prostu zalogować. Oczywiście, jeśli pamiętałeś swoje hasło. Jeśli nie, dodałem funkcjonalność resetowania hasła za pomocą kodu weryfikacyjnego
+    wysyłanego na podany adres e-mail.
+    </p>
+    <p>
+    <h2>Rejestracja</h2>
+    Kolejną rzeczą jest strona rejestracji. Jedyną rzeczą, którą dodałem do zwykłej rejestracji, była weryfikacja adresu e-mail poprzez wysłanie
+    kodu weryfikacyjnego na podany e-mail i jeśli wprowadzony kod był poprawny, aplikacja dodawała użytkownika do bazy danych z domyślną rolą.
+    </p>
+    <p>
+    <h2>Przechowywanie Danych</h2>
+    Jeśli chciałem przechować jakieś dane i mieć pewność, że będą one dostępne ze wszystkich stron, dodałem je do mojej klasy 'Data', która zawierała tylko
+    pola statyczne. Może to nie było najmądrzejsze rozwiązanie, ale wtedy było to jedyne, na co wpadłem.
+    </p>
+</div>
+<div class="section" id="data">
+    <div class="photo-text-section">
+        <div class="text">
+            <h2>Kluczowe Funkcje</h2>
+            <ul>
+                <li>Autoryzacja Użytkownika: Funkcjonalności logowania i rejestracji.</li>
+                <li>Role Użytkownika: Odrębne role dla administratorów i użytkowników, kontrolujące dostęp i uprawnienia.</li>
+                <li>Zarządzanie Produktami: Użytkownicy mogą przesyłać produkty do zatwierdzenia przez administratora przed ich wyświetleniem.</li>
+                <li>Lokalne Przechowywanie Danych: Wykorzystuje SQLite do zarządzania danymi i SharedPreferences do ustawień.</li>
+                <li>Weryfikacja Użytkownika: Po rejestracji otrzymujesz kod weryfikacyjny na swoją skrzynkę pocztową.</li>
+            </ul>
+
+            <h2>Wyzwania i Nauka</h2>
+            <p>Mimo że SimpleShop był jednym z moich pierwszych projektów i nie do końca przestrzegał zasad projektowania obiektowego czy najlepszych praktyk związanych z bezpieczeństwem, był to istotny krok w mojej drodze rozwoju, ucząc mnie cennych lekcji związanych z tworzeniem aplikacji na Androida, lokalnym przechowywaniem danych i uwzględnianiem aspektów interfejsu użytkownika.
+                Był to jeden z projektów, których nie musiałem rozszerzać siłą. Wszystkie pomysły przyszły mi do głowy, zanim zakończyłem poprzednie.</p>
+
+            <p>Dla więcej szczegółów na temat SimpleShop i innych projektów, odwiedź moje <a href="https://github.com/Hammershlag/SimpleShop" style="text-decoration-line: underline">GitHub</a>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="important">
+    <h1>Ważne</h1>
+    <ul>
+        <li>Język: Java</li>
+        <li>Data: Wrzesień 2021</li>
+    </ul>
+    W tamtym czasie nie byłem najlepszym programistą, i nie byłem zbyt biegły w używaniu gita, więc proszę to uwzględnić, przeglądając ten projekt na moim GitHubie.
+</div>
+
+<!-- Sekcja Kontaktowa -->
+<div class="section" id="contact">
+    <h1>Kontakt</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>Nie krępuj się kontaktować ze mną w przypadku pytań lub zapytań drogą mailową lub za pośrednictwem mediów społecznościowych. Chociaż ta strona obsługuje wiele języków, preferuję komunikację w języku angielskim.</p>
+            <div class="contact-info">
+                <!-- Linki do Mediów Społecznościowych i E-mail -->
+                <div class="logo"><a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                    <img src="../../../../photos/logos/facebook.png" alt="Facebook"></a>
+                </div>
+                <div class="logo"><a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                    <img src="../../../../photos/logos/linkedin.png" alt="LinkedIn"></a>
+                </div>
+                <div class="logo"><a href="https://github.com/Hammershlag" target="_blank">
+                    <img src="../../../../photos/logos/github.png" alt="GitHub"></a>
+                </div>
+                <div class="logo"><a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                    <img src="../../../../photos/logos/instagram.png" alt="Instagram"></a>
+                </div>
+                <div class="logo"><img src="../../../../photos/logos/email.png" alt="E-mail">
+                    tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
+</body>
+</html>

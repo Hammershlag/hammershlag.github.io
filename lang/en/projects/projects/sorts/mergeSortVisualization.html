@@ -25,131 +25,199 @@
             background-color: green;
         }
     </style>
+    <link rel="stylesheet" href="../../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
-<div id="container">
-    <div class="bar-container"></div>
+<div class="header">
+    <script>
+        function setViewportScale() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const viewport = document.getElementById('viewport');
+
+            if (isPortrait) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            }
+        }
+
+        window.addEventListener('load', setViewportScale);
+    </script>
+    <div class="logo">
+        <a class="nav-link" href="../../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
 </div>
-<label for="numElements">Number of Elements:</label>
-<input type="number" id="numElements" min="1" value="10">
-<button onclick="startMergeSort()">Generate and Sort</button>
-<script>
-    async function merge(arr, l, m, r) {
-        const n1 = m - l + 1;
-        const n2 = r - m;
+<div id="a0">
+    <div class="section" id="container">
+        <div class="bar-container"></div>
+    </div>
+    <label for="numElements">Number of Elements:</label>
+    <input type="number" id="numElements" min="1" value="10">
+    <button onclick="startMergeSort()">Generate and Sort</button>
+    <script>
+        async function merge(arr, l, m, r) {
+            const n1 = m - l + 1;
+            const n2 = r - m;
 
-        const L = new Array(n1);
-        const R = new Array(n2);
+            const L = new Array(n1);
+            const R = new Array(n2);
 
-        for (let i = 0; i < n1; i++) {
-            L[i] = arr[l + i];
+            for (let i = 0; i < n1; i++) {
+                L[i] = arr[l + i];
+            }
+            for (let i = 0; i < n2; i++) {
+                R[i] = arr[m + 1 + i];
+            }
+
+            let i = 0, j = 0, k = l;
+
+            while (i < n1 && j < n2) {
+                const bars = arr.map(value => createBar(value));
+                bars[l + i].classList.add('compared');
+                bars[m + 1 + j].classList.add('compared');
+
+                const barContainer = document.querySelector('.bar-container');
+                barContainer.innerHTML = '';
+                bars.forEach(bar => barContainer.appendChild(bar));
+
+                await sleep(50);
+
+                bars[l + i].classList.remove('compared');
+                bars[m + 1 + j].classList.remove('compared');
+
+                if (L[i] <= R[j]) {
+                    arr[k] = L[i];
+                    i++;
+                } else {
+                    arr[k] = R[j];
+                    j++;
+                }
+
+                k++;
+            }
+
+            while (i < n1) {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
         }
-        for (let i = 0; i < n2; i++) {
-            R[i] = arr[m + 1 + i];
+
+        async function mergeSort(arr, l, r) {
+            if (l < r) {
+                const m = Math.floor((l + r) / 2);
+
+                await mergeSort(arr, l, m);
+                await mergeSort(arr, m + 1, r);
+                await merge(arr, l, m, r);
+
+                // Visualize the array after merging
+                visualizeArray(arr);
+                await sleep(50);
+            }
         }
 
-        let i = 0, j = 0, k = l;
+        async function startMergeSort() {
+            const numElementsInput = document.getElementById('numElements');
+            const numElements = parseInt(numElementsInput.value);
 
-        while (i < n1 && j < n2) {
-            const bars = arr.map(value => createBar(value));
-            bars[l + i].classList.add('compared');
-            bars[m + 1 + j].classList.add('compared');
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            const arr = [];
+            for (let i = 1; i <= numElements; i++) {
+                arr.push(i);
+            }
+
+            shuffleArray(arr);
 
             const barContainer = document.querySelector('.bar-container');
             barContainer.innerHTML = '';
-            bars.forEach(bar => barContainer.appendChild(bar));
-
-            await sleep(50);
-
-            bars[l + i].classList.remove('compared');
-            bars[m + 1 + j].classList.remove('compared');
-
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            } else {
-                arr[k] = R[j];
-                j++;
-            }
-
-            k++;
-        }
-
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-
-    async function mergeSort(arr, l, r) {
-        if (l < r) {
-            const m = Math.floor((l + r) / 2);
-
-            await mergeSort(arr, l, m);
-            await mergeSort(arr, m + 1, r);
-            await merge(arr, l, m, r);
-
-            // Visualize the array after merging
             visualizeArray(arr);
-            await sleep(50);
+
+            barContainer.classList.remove('sorted');
+
+            await mergeSort(arr, 0, arr.length - 1);
+
+            barContainer.classList.add('sorted');
         }
-    }
 
-    async function startMergeSort() {
-        const numElementsInput = document.getElementById('numElements');
-        const numElements = parseInt(numElementsInput.value);
+        function createBar(height) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.height = height * 10 + 'px';
+            return bar;
+        }
 
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+        function visualizeArray(arr) {
+            const barContainer = document.querySelector('.bar-container');
+            barContainer.innerHTML = '';
+            for (const value of arr) {
+                const bar = createBar(value);
+                barContainer.appendChild(bar);
             }
         }
 
-        const arr = [];
-        for (let i = 1; i <= numElements; i++) {
-            arr.push(i);
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
+    </script>
+</div>
+<div class="section" id="contact">
+    <h1>Contact</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>
+                Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+            </p>
 
-        shuffleArray(arr);
+            <div class="contact-info">
+                <div class="logo">
+                    <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                        <img src="../../../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                        <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://github.com/Hammershlag" target="_blank">
+                        <img src="../../../../../photos/logos/github.png" class="logo" alt="Github">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                        <img src="../../../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                    </a>
+                </div>
+                <div class="logo">
+                    <img src="../../../../../photos/logos/email.png" class="logo" alt="Email: ">
+                    &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        const barContainer = document.querySelector('.bar-container');
-        barContainer.innerHTML = '';
-        visualizeArray(arr);
-
-        barContainer.classList.remove('sorted');
-
-        await mergeSort(arr, 0, arr.length - 1);
-
-        barContainer.classList.add('sorted');
-    }
-
-    function createBar(height) {
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = height * 10 + 'px';
-        return bar;
-    }
-
-    function visualizeArray(arr) {
-        const barContainer = document.querySelector('.bar-container');
-        barContainer.innerHTML = '';
-        for (const value of arr) {
-            const bar = createBar(value);
-            barContainer.appendChild(bar);
-        }
-    }
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-</script>
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
 </body>
 </html>

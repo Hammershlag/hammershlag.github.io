@@ -199,6 +199,46 @@ a {
     background-color: #666; /* Slightly darker on hover */
 }
 
+input[type="number"] {
+    background-color: #555; /* Dark background to match the theme */
+    color: white; /* White text color for contrast */
+    padding: 10px; /* Padding for better touch area and aesthetics */
+    border: none; /* No border for a cleaner look */
+    border-radius: 5px; /* Slightly rounded corners to match the button style */
+    font-family: Arial, sans-serif; /* Consistent font family with the rest of the site */
+    font-size: 1rem; /* Appropriate font size for readability */
+    cursor: pointer; /* Indicates it's clickable */
+    outline: none; /* Removes the default focus outline to customize later if needed */
+    appearance: none; /* Removes the default system appearance */
+    -webkit-appearance: none; /* Specifically for iOS and Safari */
+    -moz-appearance: none; /* Specifically for Firefox */
+    margin: 4px 2px; /* Some margin to keep it aligned with other elements */
+    width: 150px; /* Adjusted width for a wider appearance */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+input[type="number"]:hover {
+    background-color: #666; /* Slightly darker on hover */
+}
+
+button {
+    background-color: #555; /* A neutral, dark background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Top and bottom padding 10px, left and right padding 20px */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allows setting dimensions */
+    font-size: 16px; /* Reasonable default font size */
+    margin: 4px 2px; /* Some margin to separate from other elements */
+    cursor: pointer; /* Cursor indicates it's clickable */
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition for hover */
+}
+
+button:hover {
+    background-color: #666; /* Darken the button slightly when hovered */
+}
 
 
 

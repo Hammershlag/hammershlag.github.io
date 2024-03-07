@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubble Sort Visualization</title>
-    <link rel="stylesheet" href="../../../../../css/stylesheet.css">
+    <title>Wizualizacja Sortowania Holenderskiej Flagi Narodowej</title>
     <style>
-        /* Additional styles specific to this page */
         .bar-container {
             display: flex;
             flex-direction: row;
@@ -14,19 +12,24 @@
 
         .bar {
             width: 20px;
-            margin: 0 5px; /* Added 5px margin to create spacing */
-            background-color: blue;
-            border: 1px solid black; /* Added black border */
+            margin: 0 5px;
+            border: 1px solid black;
         }
 
-        .compared {
+        .red {
             background-color: red;
         }
 
-        .sorted .bar {
-            background-color: green;
+        .white {
+            background-color: white;
+        }
+
+        .blue {
+            background-color: blue;
         }
     </style>
+    <link rel="stylesheet" href="../../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
 <div class="header">
@@ -50,20 +53,19 @@
         </a>
     </div>
 </div>
-
 <div id="a0">
     <div class="section" id="container">
         <div class="bar-container"></div>
     </div>
-    <label for="numElements">Number of Elements:</label>
+    <label for="numElements">Liczba Elementów:</label>
     <input type="number" id="numElements" min="1" value="10">
-    <button onclick="startBubbleSort()">Start Bubble Sort</button>
+    <button onclick="startDNFSort()">Generuj i Sortuj</button>
     <script>
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        async function startBubbleSort() {
+        async function startDNFSort() {
             const numElementsInput = document.getElementById('numElements');
             const numElements = parseInt(numElementsInput.value);
 
@@ -76,75 +78,66 @@
 
             const arr = [];
             for (let i = 1; i <= numElements; i++) {
-                arr.push(i);
+                arr.push(Math.floor(Math.random() * 3)); // Przypisz 0 (czerwony), 1 (biały) lub 2 (niebieski)
             }
 
-            // Zresetuj kolor wszystkich elementów na niebieski
             const bars = arr.map(value => createBar(value));
-            bars.forEach(bar => bar.style.backgroundColor = 'blue');
             const barContainer = document.querySelector('.bar-container');
             barContainer.innerHTML = '';
             bars.forEach(bar => barContainer.appendChild(bar));
 
-            shuffleArray(arr);
+            // Zastosuj Sortowanie Holenderskiej Flagi Narodowej
+            let low = 0;
+            let mid = 0;
+            let high = arr.length - 1;
 
-            barContainer.classList.remove('sorted');
+            while (mid <= high) {
+                bars[low].style.border = '3px solid green';
+                bars[mid].style.border = '3px solid green';
+                bars[high].style.border = '3px solid green';
 
-            let isSorted = false;
-
-            for (let i = 0; i < arr.length - 1; i++) {
-                for (let j = 0; j < arr.length - i - 1; j++) {
-                    const bars = arr.map(value => createBar(value));
-
-                    bars[j].classList.add('compared');
-                    bars[j + 1].classList.add('compared');
-
-                    barContainer.innerHTML = '';
-                    bars.forEach(bar => barContainer.appendChild(bar));
-
-                    await sleep(50);
-
-                    bars[j].classList.remove('compared');
-                    bars[j + 1].classList.remove('compared');
-
-                    if (arr[j] > arr[j + 1]) {
-                        const temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-
-                        barContainer.innerHTML = '';
-                        arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
-
-                        await sleep(50);
-                    }
+                if (arr[mid] === 0) {
+                    [arr[low], arr[mid]] = [arr[mid], arr[low]];
+                    low++;
+                    mid++;
+                } else if (arr[mid] === 1) {
+                    mid++;
+                } else {
+                    [arr[mid], arr[high]] = [arr[high], arr[mid]];
+                    high--;
                 }
 
-                if (arr.slice().sort((a, b) => a - b).join('') === arr.join('')) {
-                    isSorted = true;
-                    break;
-                }
+                // Wizualizacja procesu sortowania
+                barContainer.innerHTML = '';
+                bars.forEach((bar, index) => {
+                    bar.style.border = '1px solid black';
+                    bar.classList.remove('red', 'white', 'blue', 'border-sorted');
+                    bar.classList.add(['red', 'white', 'blue'][arr[index]]);
+                    barContainer.appendChild(bar);
+                });
+
+                await sleep(500);
             }
 
-            if (isSorted) {
-                barContainer.classList.add('sorted');
-            }
+            // Oznacz posortowaną tablicę zielonymi obramowaniami
+            bars.forEach(bar => bar.style.border = '3px solid green');
         }
 
-        function createBar(height) {
+        function createBar(value) {
             const bar = document.createElement('div');
             bar.className = 'bar';
-            bar.style.height = height * 10 + 'px';
+            bar.classList.add(['red', 'white', 'blue'][value]);
+            bar.style.height = '20px';
             return bar;
         }
     </script>
 </div>
-
 <div class="section" id="contact">
-    <h1>Contact</h1>
+    <h1>Kontakt</h1>
     <div class="photo-text-section">
         <div class="text">
             <p>
-                Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+                Skontaktuj się ze mną, jeśli masz jakiekolwiek pytania. Możesz się ze mną skontaktować za pomocą e-maila lub mediów społecznościowych. Nawet jeśli widzisz tę stronę w innych językach, mój preferowany język komunikacji to angielski.
             </p>
 
             <div class="contact-info">
@@ -155,7 +148,7 @@
                 </div>
                 <div class="logo">
                     <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
-                        <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+                        <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkedIn">
                     </a>
                 </div>
                 <div class="logo">
@@ -176,7 +169,6 @@
         </div>
     </div>
 </div>
-
 <footer>
     <div class="footer-content">
         <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>

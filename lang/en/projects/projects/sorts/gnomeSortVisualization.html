@@ -25,88 +25,156 @@
             background-color: green;
         }
     </style>
+    <link rel="stylesheet" href="../../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
-<div id="container">
-    <div class="bar-container"></div>
-</div>
-<label for="numElements">Number of Elements:</label>
-<input type="number" id="numElements" min="1" value="10">
-<button onclick="startGnomeSort()">Generate and Sort</button>
-<script>
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+<div class="header">
+    <script>
+        function setViewportScale() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const viewport = document.getElementById('viewport');
 
-    async function startGnomeSort() {
-        const numElementsInput = document.getElementById('numElements');
-        const numElements = parseInt(numElementsInput.value);
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+            if (isPortrait) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
             }
         }
 
-        const arr = [];
-        for (let i = 1; i <= numElements; i++) {
-            arr.push(i);
+        window.addEventListener('load', setViewportScale);
+    </script>
+    <div class="logo">
+        <a class="nav-link" href="../../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+</div>
+<div id="a0">
+    <div class="section" id="container">
+        <div class="bar-container"></div>
+    </div>
+    <label for="numElements">Number of Elements:</label>
+    <input type="number" id="numElements" min="1" value="10">
+        <button onclick="startGnomeSort()">Start Gnome Sort</button>
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        const bars = arr.map(value => createBar(value));
-        bars.forEach(bar => bar.style.backgroundColor = 'blue');
-        const barContainer = document.querySelector('.bar-container');
-        barContainer.innerHTML = '';
-        bars.forEach(bar => barContainer.appendChild(bar));
+        async function startGnomeSort() {
+            const numElementsInput = document.getElementById('numElements');
+            const numElements = parseInt(numElementsInput.value);
 
-        shuffleArray(arr);
-
-        barContainer.classList.remove('sorted');
-
-        let i = 0;
-
-        while (i < arr.length) {
-            if (i === 0 || arr[i] >= arr[i - 1]) {
-                i++;
-            } else {
-                const bars = arr.map(value => createBar(value));
-
-                bars[i].classList.add('compared');
-                bars[i - 1].classList.add('compared');
-
-                barContainer.innerHTML = '';
-                bars.forEach(bar => barContainer.appendChild(bar));
-
-                await sleep(50);
-
-                bars[i].classList.remove('compared');
-                bars[i - 1].classList.remove('compared');
-
-                const temp = arr[i];
-                arr[i] = arr[i - 1];
-                arr[i - 1] = temp;
-
-                barContainer.innerHTML = '';
-                arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
-
-                await sleep(50);
-
-                if (i > 0) {
-                    i--;
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
                 }
             }
+
+            const arr = [];
+            for (let i = 1; i <= numElements; i++) {
+                arr.push(i);
+            }
+
+            const bars = arr.map(value => createBar(value));
+            bars.forEach(bar => bar.style.backgroundColor = 'blue');
+            const barContainer = document.querySelector('.bar-container');
+            barContainer.innerHTML = '';
+            bars.forEach(bar => barContainer.appendChild(bar));
+
+            shuffleArray(arr);
+
+            barContainer.classList.remove('sorted');
+
+            let i = 0;
+
+            while (i < arr.length) {
+                if (i === 0 || arr[i] >= arr[i - 1]) {
+                    i++;
+                } else {
+                    const bars = arr.map(value => createBar(value));
+
+                    bars[i].classList.add('compared');
+                    bars[i - 1].classList.add('compared');
+
+                    barContainer.innerHTML = '';
+                    bars.forEach(bar => barContainer.appendChild(bar));
+
+                    await sleep(50);
+
+                    bars[i].classList.remove('compared');
+                    bars[i - 1].classList.remove('compared');
+
+                    const temp = arr[i];
+                    arr[i] = arr[i - 1];
+                    arr[i - 1] = temp;
+
+                    barContainer.innerHTML = '';
+                    arr.map(value => createBar(value)).forEach(bar => barContainer.appendChild(bar));
+
+                    await sleep(50);
+
+                    if (i > 0) {
+                        i--;
+                    }
+                }
+            }
+
+            barContainer.classList.add('sorted');
         }
 
-        barContainer.classList.add('sorted');
-    }
+        function createBar(height) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.height = height * 10 + 'px';
+            return bar;
+        }
+    </script>
+</div>
+<div class="section" id="contact">
+    <h1>Contact</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>
+                Feel free to reach out to me if you have any questions or inquiries. You can get in touch via email or social media. Even though you may see this website in other languages, my preferred language of communication is English.
+            </p>
 
-    function createBar(height) {
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = height * 10 + 'px';
-        return bar;
-    }
-</script>
+            <div class="contact-info">
+                <div class="logo">
+                    <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                        <img src="../../../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                        <img src="../../../../../photos/logos/linkedin.png" class="logo" alt="LinkeIn">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://github.com/Hammershlag" target="_blank">
+                        <img src="../../../../../photos/logos/github.png" class="logo" alt="Github">
+                    </a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                        <img src="../../../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                    </a>
+                </div>
+                <div class="logo">
+                    <img src="../../../../../photos/logos/email.png" class="logo" alt="Email: ">
+                    &nbsp;&nbsp;tomekzbroszczyk@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
 </body>
 </html>
