@@ -49,6 +49,18 @@ body {
     padding-bottom: 80px;
 }
 
+#contact .contact-info .logo {
+    display: block;
+    margin: 0 auto;
+}
+
+#contact .contact-info > *:not(.logo) {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+
 .header a {
     color: #fff;
     text-decoration: none;
