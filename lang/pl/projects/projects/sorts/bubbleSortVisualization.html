@@ -30,24 +30,13 @@
 </head>
 <body>
 <div class="header">
-    <script>
-        function setViewportScale() {
-            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-            const viewport = document.getElementById('viewport');
-
-            if (isPortrait) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
-            } else {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
-            }
-        }
-
-        window.addEventListener('load', setViewportScale);
-    </script>
     <div class="logo">
         <a class="nav-link" href="../../../home.html">
             <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
         </a>
+    </div>
+    <div class="back-button">
+        <a href="javascript:history.back()" class="button">Wstecz</a>
     </div>
 </div>
 <div class="section" id="a0">

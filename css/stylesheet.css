@@ -63,13 +63,16 @@ body {
     font-weight: bold;
     display: flex;
     align-items: center;
+    margin-left: auto; /* Push the logo to the far right */
 }
 
-.logo img { /* use margin-right to space from text or max-width:5% */
+.logo img {
     min-width: 35px;
     height: auto;
     max-height: 35px;
+    margin-right: 20px; /* Add some spacing between the logo and the back button */
 }
+
 
 
 .section {
@@ -240,6 +243,27 @@ button:hover {
     background-color: #666; /* Darken the button slightly when hovered */
 }
 
+.back-button {
+    margin-left: auto; /* Push the button to the right */
+}
+
+.button {
+    background-color: #555; /* A neutral, dark background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Top and bottom padding 10px, left and right padding 20px */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allows setting dimensions */
+    font-size: 16px; /* Reasonable default font size */
+    cursor: pointer; /* Cursor indicates it's clickable */
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition for hover */
+}
+
+.button:hover {
+    background-color: #666; /* Darken the button slightly when hovered */
+}
 
 
 

@@ -8,29 +8,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
 </head>
 <body>
-<div class="header"  id="">
-    <script>
-        function setViewportScale() {
-            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-            const viewport = document.getElementById('viewport');
-
-            if (isPortrait) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
-            } else {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=0.4');
-            }
-        }
-
-        window.addEventListener('load', setViewportScale);
-    </script>
+<div class="header">
     <div class="logo">
         <a class="nav-link" href="../../home.html">
             <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
         </a>
     </div>
+    <div class="back-button">
+        <a href="javascript:history.back()" class="button">Back</a>
+    </div>
 </div>
-
-<!-- SimpleShop Project Section -->
 <div class="section" id="simpleShopTitle">
     <h1>SimpleShop: My Android Development Journey</h1>
 </div>
