@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Offer Submission Form</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #jobOfferForm {
+            width: 50%;
+            max-width: 600px;
+        }
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<form id="jobOfferForm">
+    <div class="form-title">Job Offer Submission Form</div>
+
+    <div class="form-group">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" required>
+    </div>
+
+    <div class="form-group">
+        <label for="jobDescription">Job Description:</label>
+        <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="departmentName">Department Name:</label>
+        <input type="text" id="departmentName" name="departmentName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="numberOfPositions">Number of Available Positions:</label>
+        <input type="number" id="numberOfPositions" name="numberOfPositions" min="1" required>
+    </div>
+
+    <div class="form-group">
+        <label for="salaryFrom">Salary (From):</label>
+        <input type="number" id="salaryFrom" name="salaryFrom" min="0" required>
+    </div>
+
+    <div class="form-group">
+        <label for="salaryTo">Salary (To):</label>
+        <input type="number" id="salaryTo" name="salaryTo" min="0" required>
+    </div>
+
+    <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+    </div>
+
+    <div class="form-group">
+        <label for="promotionGraphics">Promotion Graphics:</label>
+        <input type="file" id="promotionGraphics" name="promotionGraphics" accept="image/*">
+    </div>
+
+    <div class="form-group">
+        <label for="contactEmail">Contact Email:</label>
+        <input type="email" id="contactEmail" name="contactEmail" required>
+    </div>
+
+    <div class="form-group">
+        <label for="contactPhoneNumber">Contact Phone Number:</label>
+        <input type="tel" id="contactPhoneNumber" name="contactPhoneNumber" required>
+    </div>
+
+    <div class="form-group">
+        <label for="officeHours">Office Working Hours:</label>
+        <input type="text" id="officeHours" name="officeHours" required>
+    </div>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    // Add your JavaScript for form validation here
+    document.getElementById("jobOfferForm").addEventListener("submit", function(event) {
+        // Example validation, you can customize as needed
+        var salaryFrom = document.getElementById("salaryFrom").value;
+        var salaryTo = document.getElementById("salaryTo").value;
+        if (parseInt(salaryFrom) >= parseInt(salaryTo)) {
+            alert("Salary (From) must be less than Salary (To)");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
+</body>
+</html>
