@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner Loader</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #222;
+        }
+
+        .spinner {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .dot {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .dot:nth-child(1) {
+            background-color: red;
+            animation: orbit1 2s linear infinite, trail1 2s linear infinite;
+        }
+
+        .dot:nth-child(2) {
+            background-color: green;
+            animation: orbit2 2s linear infinite, trail2 2s linear infinite;
+        }
+
+        .dot:nth-child(3) {
+            background-color: blue;
+            animation: orbit3 2s linear infinite, trail3 2s linear infinite;
+        }
+
+        .dot:nth-child(4) {
+            background-color: yellow;
+            animation: orbit4 2s linear infinite, trail4 2s linear infinite;
+        }
+
+        @keyframes orbit1 {
+            0% { transform: translate(0px, -50px); }
+            25% { transform: translate(50px, 0px); }
+            50% { transform: translate(0px, 50px); }
+            75% { transform: translate(-50px, 0px); }
+            100% { transform: translate(0px, -50px); }
+        }
+
+        @keyframes orbit2 {
+            0% { transform: translate(50px, 0px); }
+            25% { transform: translate(0px, 50px); }
+            50% { transform: translate(-50px, 0px); }
+            75% { transform: translate(0px, -50px); }
+            100% { transform: translate(50px, 0px); }
+        }
+
+        @keyframes orbit3 {
+            0% { transform: translate(0px, 50px); }
+            25% { transform: translate(-50px, 0px); }
+            50% { transform: translate(0px, -50px); }
+            75% { transform: translate(50px, 0px); }
+            100% { transform: translate(0px, 50px); }
+        }
+
+        @keyframes orbit4 {
+            0% { transform: translate(-50px, 0px); }
+            25% { transform: translate(0px, -50px); }
+            50% { transform: translate(50px, 0px); }
+            75% { transform: translate(0px, 50px); }
+            100% { transform: translate(-50px, 0px); }
+        }
+
+        @keyframes trail1 {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+        }
+
+        @keyframes trail2 {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); }
+            50% { box-shadow: 0 0 5px rgba(0, 255, 0, 0.2); }
+        }
+
+        @keyframes trail3 {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 0, 255, 0.5); }
+            50% { box-shadow: 0 0 5px rgba(0, 0, 255, 0.2); }
+        }
+
+        @keyframes trail4 {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.5); }
+            50% { box-shadow: 0 0 5px rgba(255, 255, 0, 0.2); }
+        }
+    </style>
+</head>
+<body>
+<div class="spinner">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Text Field</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .fancy-input {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #00b4db;
+            border-radius: 0;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 20px rgba(0, 180, 219, 0.5), 0 0 20px rgba(0, 131, 176, 0.5);
+        }
+
+        .fancy-input:focus {
+            border-bottom: 2px solid #0083b0;
+            box-shadow: 0 0 30px rgba(0, 180, 219, 0.7), 0 0 30px rgba(0, 131, 176, 0.7);
+        }
+    </style>
+</head>
+<body>
+<input type="text" class="fancy-input" placeholder="Enter text">
+</body>
+</html>
