@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fancy Button</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #25252b;
+            font-family: Arial, sans-serif;
+        }
+        .fancy-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #45f3ff;
+            background: repeating-conic-gradient(from var(--a), #ff2770 0%, #ff2770 5%, transparent 5%, transparent 40%, #ff2770 50%);
+            border: 2px solid #25252b;
+            border-radius: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px #ff2770, 0 0 20px #ff2770, 0 0 40px #ff2770, 0 0 60px #ff2770;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            animation: animateButton 4s linear infinite;
+        }
+        @property --a {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+        @keyframes animateButton {
+            0% {
+                --a: 0deg;
+            }
+            100% {
+                --a: 360deg;
+            }
+        }
+    </style>
+</head>
+<body>
+<button class="fancy-button">Click Me</button>
+</body>
+</html>

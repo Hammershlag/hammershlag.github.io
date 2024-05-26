@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Text Field</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0f0f0f;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .neon-input {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .neon-input:focus {
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+    </style>
+</head>
+<body>
+<input type="text" class="neon-input" placeholder="Enter text">
+</body>
+</html>

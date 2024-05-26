@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #121212;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .fancy-button {
+      padding: 20px 40px;
+      font-size: 18px;
+      color: #fff;
+      background: linear-gradient(45deg, #00b4db, #0083b0);
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 0 20px rgba(0, 180, 219, 0.5), 0 0 20px rgba(0, 131, 176, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fancy-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.75s ease-out;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    .fancy-button:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .fancy-button:hover {
+      box-shadow: 0 0 30px rgba(0, 180, 219, 0.7), 0 0 30px rgba(0, 131, 176, 0.7);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+<button class="fancy-button">Click Me</button>
+</body>
+</html>

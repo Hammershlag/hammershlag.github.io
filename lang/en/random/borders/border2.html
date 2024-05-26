@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #25252b;
+        }
+        .fancy-border {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        .fancy-border::before, .fancy-border::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            background: linear-gradient(45deg, #e74c3c, #f9c922, #3498db, #8e44ad);
+            background-size: 400% 400%;
+            animation: animateBorder 8s linear infinite;
+            z-index: -1;
+            border-radius: 10px;
+        }
+        .fancy-border::after {
+            filter: blur(15px);
+            background: #25252b;
+
+        }
+        @keyframes animateBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="fancy-border"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #0d0d0d;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 800px;
+        }
+
+        .trail {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ffec00, #ff6700);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.01);
+            animation: fade 1.5s ease-out forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes fade {
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        p {
+            color: #ccc;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            color: #ffec00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff6700;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Fancy Cursor Trail</h1>
+    <p>This is a fancy cursor trail effect. Move your mouse around to see the magic happen!</p>
+    <a href="#" target="_blank">Learn more</a>
+</div>
+<script>
+    document.body.addEventListener('mousemove', function(e) {
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        trail.style.left = `${e.clientX}px`;
+        trail.style.top = `${e.clientY}px`;
+        document.body.appendChild(trail);
+        setTimeout(() => {
+            trail.remove();
+        }, 1500);
+    });
+</script>
+</body>
+</html>

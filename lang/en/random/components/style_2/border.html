@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fancy Border</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #25252b;
+            font-family: Arial, sans-serif;
+        }
+        .fancy-border {
+            padding: 20px;
+            background: transparent;
+            border: 2px solid #00ff0a;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #00ff0a, 0 0 20px #00ff0a, 0 0 40px #00ff0a, 0 0 60px #00ff0a;
+            transition: all 0.3s ease-in-out;
+            color: #00ff0a;
+            text-align: center;
+            animation: animateBorder 10s linear infinite;
+        }
+        @keyframes animateBorder {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="fancy-border">Content goes here</div>
+</body>
+</html>

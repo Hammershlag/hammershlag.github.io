@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Futuristic Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0f0f0f;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .neon-button {
+            padding: 20px 50px;
+            font-size: 20px;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        .neon-button::before,
+        .neon-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #0ff;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .neon-button::before {
+            filter: blur(5px);
+            opacity: 0.5;
+        }
+
+        .neon-button::after {
+            filter: blur(10px);
+            opacity: 0.3;
+        }
+
+        .neon-button:hover {
+            color: #0ff;
+        }
+
+        .neon-button:hover::before,
+        .neon-button:hover::after {
+            filter: blur(20px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<button class="neon-button">Click Me</button>
+</body>
+</html>
