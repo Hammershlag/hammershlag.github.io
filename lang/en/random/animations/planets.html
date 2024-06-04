@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner Loader</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /**background: rgba(0, 0, 0, 0.93);**/
+            background: rgba(0, 0, 0, 0.0);
+        }
+
+        .spinner {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .planets {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .main {
+            margin: auto;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            /**background: #5c87bb;**/
+            background-image: url("noise_main.png");
+            border-radius: 50%;
+            animation: mainPlanet 5s linear infinite;
+            z-index: 1;
+            box-shadow: 7px 7px 20px #252525;
+            border: 1px solid black;
+        }
+
+        .spot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #8c8c8c;
+            border-radius: 50%;
+            top: -120px; /* Adjust to position the spot */
+            left: -140px; /* Adjust to position the spot */
+            animation: spotRotate 5s linear infinite;
+            z-index: 3;
+        }
+
+        .dot {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            top: 50px;
+            left: 50px;
+            border-radius: 50%;
+            z-index: 2;
+            border: 1px solid black;
+            box-shadow: 5px 5px 11px #252525;
+
+        }
+
+        .dot:nth-child(1) {
+            /**background-color: #8475e1;**/
+            background-image: url("noise_1.png");
+            animation: move 3s ease-in-out infinite;
+        }
+
+        .dot:nth-child(2) {
+            /**background-color: #696969;**/
+            background-image: url("noise_2.png");
+            animation: move 5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .dot:nth-child(3) {
+            /**background-color: #252525;**/
+            background-image: url("noise_3.png");
+            animation: move 4s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .dot:nth-child(4) {
+            /**background-color: #b9b9b9;**/
+            background-image: url("noise_4.png");
+            animation: move 2s ease-in-out infinite;
+            animation-delay: 1.5s;
+            animation-direction: reverse;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(calc(-60px * cos(var(--rotation-angle)) - -60px * sin(var(--rotation-angle))))
+                translateY(calc(-60px * sin(var(--rotation-angle)) + -60px * cos(var(--rotation-angle))));
+                z-index: 2;
+                width: 15px;
+                height: 15px;
+            }
+            25% {
+                width: 20px;
+                height: 20px;
+            }
+            50% {
+                transform: translateX(calc(50px * cos(var(--rotation-angle)) - 50px * sin(var(--rotation-angle))))
+                translateY(calc(50px * sin(var(--rotation-angle)) + 50px * cos(var(--rotation-angle))));
+                width: 15px;
+                height: 15px;
+            }
+            75% {
+                width: 12px;
+                height: 12px;
+
+            }
+            100% {
+                transform: translateX(calc(-60px * cos(var(--rotation-angle)) - -60px * sin(var(--rotation-angle))))
+                translateY(calc(-60px * sin(var(--rotation-angle)) + -60px * cos(var(--rotation-angle))));
+                z-index: 1;
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @keyframes spotRotate {
+            0% {
+                transform: rotateY(180deg) rotateZ(45deg);
+            }
+        }
+
+        @keyframes mainPlanet {
+            0% {
+                width: 75px;
+            }
+            50% {
+                width: 100px;
+            }
+            100% {
+                width: 75px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="spinner">
+    <div class="planets">
+        <div class="dot" style="--rotation-angle: 0deg"></div>
+        <div class="dot" style="--rotation-angle: 30deg"></div>
+        <div class="dot" style="--rotation-angle: 60deg"></div>
+        <div class="dot" style="--rotation-angle: 90deg"></div>
+        <div class="main"></div>
+        <div class="spot"></div>
+
+    </div>
+</div>
+</body>
+</html>
