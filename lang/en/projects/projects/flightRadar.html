@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Zbroszczyk - Personal Portfolio</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a class="nav-link" href="../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+    <div class="back-button">
+        <a href="javascript:history.back()" class="button">Back</a>
+    </div>
+</div>
+<div class="section" id="flightRadarTitle">
+    <h1>SimpleShop: My Android Development Journey</h1>
+</div>
+<div class="section" id="flightRadar">
+    FlightRadar: OOD Project
+    During this project, I developed a C# flight data management
+    application, enhancing my skills in Object-Oriented Design
+    (OOD). I handled data loading and serialization, integrated real time updates using a simulated network data source,
+    synchronized data with a GUI, and implemented a news
+    generation system. I also managed dynamic data updates and
+    created a command system for querying and manipulating
+    data, applying key OOD principles. This experience improved
+    my ability to create scalable, maintainable, and efficient
+    software solutions
+</div>
+
+
+<div class="section" id="data">
+    <h2>Part 1: Introduction and Data Loading</h2>
+    <h3>Loading data from an FTR file</h3>
+    <p>An FTR file is a text file with the following format:</p>
+    <ul>
+        <li>Each line of text describes a single object and its associated values.</li>
+        <li>All values in a line of text are separated by commas.</li>
+        <li>The first value of each object in the file is a string describing the class to which the object belongs.</li>
+        <li>Some values are of array type. In this case, the values belonging to the array are enclosed in square brackets and separated by semicolons.</li>
+    </ul>
+    <p>The application should read data from the FTR file (a sample file is provided) and store it in memory in the form of objects of the appropriate classes. The values of each object class are described in the FTRFormat.pdf file. The code should be easily modifiable in case, for example, a new class or a completely new data source appears.</p>
+
+    <h3>Serialization to a JSON file</h3>
+    <p>After loading the data, the application should save the data to a JSON file in a format corresponding to the classes defined in the program. The code should be easily modifiable in case, for example, a new data format appears.</p>
+
+    <a href="flightRadarTasks/part1.pdf">Click here for part 1</a>
+
+    <h2>Part 2: Adding New Data Source and Implementing Application Commands</h2>
+
+    <h3>Adding New Data Source</h3>
+    <p>In this stage, a new data source is added to the program. This data source simulates a TCP server broadcasting information about flights. It is provided in the form of a class from a NetworkSourceSimulator.dll library, which is added to the project. The data source transforms .ftr file into binary messages, which are then provided to the user.</p>
+
+    <h3>Implementing Snapshot Creation and Exiting Application</h3>
+    <p>While running, the application listens for commands entered using the command line. When the "print" command is registered, the application serializes all data currently available (read from the new source) to the "snapshot_HH_MM_SS.json" file. The "exit" command exits the application and frees all of its resources (threads, processes).</p>
+
+    <a href="flightRadarTasks/part2.pdf">Click here for part 2</a>
+
+    <h2>Part 3: Synchronization of Data with GUI</h2>
+
+    <h3>Adding Synchronization with GUI</h3>
+    <p>In this stage, the task is to add synchronization of data obtained from the server or text file with the graphical user interface (GUI). The application with an interface has been prepared and can be imported into the project using the NuGet package. All necessary methods for interacting with window controls have been extracted into separate functions.</p>
+
+    <h3>Application Appearance and Communication</h3>
+    <p>The application window consists of a world map with icons representing the positions of airplanes at any given moment. All airplanes for which there is a flight in the stored database are displayed on the map. The positions of airplanes are constantly refreshed. The movement is minimal enough to recommend zooming in on the map to observe airplane movement. The displayed map can be zoomed in using the mouse scroll.</p>
+
+    <h3>Class Structure of FlightGUIData and FlightGUI</h3>
+    <p>Data accepted by the UpdateGUI function is in the form of an object of the class FlightsGUIData. The objects in the internal list flightsData have the form of objects of the class FlightGUI. ID is a unique flight identifier. WorldPosition is a structure storing latitude and longitude. MapCoordRotation is the angle between the flight direction vector in map coordinates and the vector (0,1), given in radians.</p>
+
+    <a href="flightRadarTasks/part3.pdf">Click here for part 3</a>
+
+    <h2>Part 4: News Generation by News Providers</h2>
+
+    <h3>Introduction</h3>
+    <p>Add news generation by news providers (TV, radio and newspapers) to the program about one of the following objects: an airport, a cargo plane and a passenger plane.</p>
+
+    <h3>News Providers</h3>
+    <p>Add three new classes to the program: Television, Radio, Newspaper. Each type of news provider should have a property with its name. Objects, about which reports can be made, should implement a new interface: IReportable. In the future it is more likely that new news providers will be added rather than new reportable objects. Add functions to the news provider classes which take the object they are reporting about and return a string describing this object.</p>
+
+    <h3>NewsGenerator Class</h3>
+    <p>In the program, each newspiece should be generated by an object of a new class: NewsGenerator. Its constructor should take two arguments: a list of news providers and a list of objects implementing IReportable. Text generation should be implemented in a method called GenerateNextNews, which selects the next pair belonging to the cartesian product of the lists given to the constructor and returns the corresponding news string or null if all pairs have been exhausted.</p>
+
+    <h3>News Report Generation</h3>
+    <p>Add a new command to the program: report. report prints out a news overview generated using the data read from the FTR file. Upon executing report call a function creating the following objects with the following names: TV stations (Abelian Television, Channel TV-Tensor), Radios (Quantifier radio, Shmem radio), Newspapers (Categories Journal, Polytechnical Gazette). Using NewsGenerator generate all possible using the given news providers about all the objects implementing IReportable which have been loaded from the FTR file.</p>
+
+    <a href="flightRadarTasks/part4.pdf">Click here for part 4</a>
+
+
+    <h2>Part 5: Updating State of Previously Loaded Objects</h2>
+
+    <h3>Data Source</h3>
+    <p>The data source simulating the network source used in the previous stages has been enriched with a mechanism for reporting changes in object data. The source interface now includes 3 additional events: OnIDUpdate, OnPositionUpdate, and OnContactInfoUpdate. These events can be reported at any time while the data source is running. A system should be created that allows easy handling of new types of events updating objects.</p>
+
+    <h3>OnIDUpdate</h3>
+    <p>Event is defined in the following way: public event IDUpdate? OnIDUpdate; public delegate void IDUpdate(object sender, IDUpdateArgs args); public class IDUpdateArgs { public UInt64 ObjectID { get; init; } public UInt64 NewObjectID { get; init; } } ObjectID – current object ID, NewObjectID – new object ID.</p>
+
+    <h3>OnPositionUpdate</h3>
+    <p>Event is defined in the following way: public event PositionUpdate? OnPositionUpdate; public class PositionUpdateArgs { public UInt64 ObjectID { get; init; } public Single Longitude { get; init; } public Single Latitude { get; init; } public Single AMSL { get; init; } } ObjectID – current object ID, Longitude – new longitude component, Latitude – new latitude component, AMSL – new AMSL component. All displayed flights should be updated accordingly to the new data. If update is done to the flight or plane object. Current position of the flight/plane should be set to new values, and you should interpolate from this position to the target one.</p>
+
+    <h3>OnContactInfoUpdate</h3>
+    <p>Event is defined in the following way: public event ContactInfoUpdate? OnContactInfoUpdate; public delegate void ContactInfoUpdate(object sender, ContactInfoUpdateArgs args); public class ContactInfoUpdateArgs { public UInt64 ObjectID { get; init; } public string PhoneNumber { get; init; } public string EmailAddress { get; init; } } ObjectID – current object ID, PhoneNumber – new phone number, EmailAddress – new email address.</p>
+
+    <h3>Integration</h3>
+    <p>The updated data source is to work together with data loaded from the .ftr file. Application should first load all data from the .ftr file, then run the network source simulator with the given sample .ftre file and handle reported events (including those with new data). All changes made to existing data should be logged to a text file. The logs should contain information about the status before and after the modification. Logs from each day should be logged into separate files. It should be possible to distinguish between different application runs on the same day.</p>
+
+    <a href="flightRadarTasks/part5.pdf">Click here for part 5</a>
+
+    <h2>Part 6: Adding Search and Filter Mechanism</h2>
+
+    <h3>System of Commands and Queries</h3>
+    <p>Your task is to expand the application with a set of additional commands: display, update, delete, and add. These commands allow for displaying data in a table format, updating data, removing selected data, and adding new data respectively. The commands can be used with various parameters and conditions to manipulate the data.</p>
+
+    <h3>Object Classes and Fields</h3>
+    <p>The commands can be used with various object classes such as Crew, Passenger, Cargo, CargoPlane, PassengerPlane, Airport, or Flight. Each of these classes has specific fields that can be manipulated using the commands.</p>
+
+    <h3>Conditions and Key-Value Pairs</h3>
+    <p>The commands can be used with conditions and key-value pairs to specify which data to manipulate and how to manipulate it. Conditions consist of the field name of the object class, an operator (=, <=, >=, !=), and a value. Key-value pairs consist of the name of the field of the given object class and a value, separated by an equals sign.</p>
+
+    <h3>Table Display Format</h3>
+    <p>The table in the console is displayed in a specific format with column headers aligned to the left side and values aligned to the right side. Columns are width-adjusted to the longest value in the column and always have a padding of 1 space from the column edge.</p>
+
+    <h3>Object-Oriented Design Methods</h3>
+    <p>All functionalities must be implemented using object-oriented design methods, i.e., separate command parsing, query creation, query execution, and results presentation in table format. Commands and functionality from previous stages must also continue to run correctly. Note that the use of reflection mechanisms is strictly prohibited.</p>
+
+    <a href="flightRadarTasks/part6.pdf">Click here for part 6</a>
+
+
+</div>
+
+<div class="section" id="important">
+    <h1>Important</h1>
+    <ul>
+        <li>Language: C#</li>
+        <li>Time: March - June 2024</li>
+    </ul>
+</div>
+
+<!-- Contact Section -->
+<div class="section" id="contact">
+    <h1>Contact</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>Feel free to reach out to me for questions or inquiries via email or social media. While this website supports multiple languages, I prefer communication in English.</p>
+            <div class="contact-info">
+                <!-- Social Links and Email -->
+                <div class="logo"><a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                    <img src="../../../../photos/logos/facebook.png" alt="Facebook"></a>
+                </div>
+                <div class="logo"><a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                    <img src="../../../../photos/logos/linkedin.png" alt="LinkedIn"></a>
+                </div>
+                <div class="logo"><a href="https://github.com/Hammershlag" target="_blank">
+                    <img src="../../../../photos/logos/github.png" alt="GitHub"></a>
+                </div>
+                <div class="logo"><a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                    <img src="../../../../photos/logos/instagram.png" alt="Instagram"></a>
+                </div>
+                <div class="logo">
+                    <a href="mailto:tomekzbroszczyk@gmail.com">
+                        <img src="../../../../photos/logos/email.png" class="logo" alt="tomekzbroszczyk@gmail.com">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
+</body>
+</html>
+</body>
+</html>
