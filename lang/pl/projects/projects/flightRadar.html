@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Zbroszczyk - Portfolio Osobiste</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a class="nav-link" href="../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+    <div class="back-button">
+        <a href="javascript:history.back()" class="button">Wstecz</a>
+    </div>
+</div>
+<div class="section" id="flightRadarTitle">
+    <h1>SimpleShop: Moja Podróż z Programowaniem Androida</h1>
+</div>
+<div class="section" id="flightRadar">
+    FlightRadar: Projekt OOD
+    Podczas tego projektu stworzyłem aplikację do zarządzania danymi lotniczymi w C#, doskonaląc swoje umiejętności w zakresie Projektowania Zorientowanego Obiektowo (OOD). Obsługiwałem ładowanie i serializację danych, zintegrowałem aktualizacje w czasie rzeczywistym przy użyciu symulowanego źródła danych sieciowych, synchronizowałem dane z GUI oraz wdrożyłem system generowania wiadomości. Zarządzałem również dynamicznymi aktualizacjami danych i stworzyłem system komend do zapytań i manipulacji danymi, stosując kluczowe zasady OOD. To doświadczenie poprawiło moje umiejętności tworzenia skalowalnych, łatwych w utrzymaniu i efektywnych rozwiązań programistycznych.
+</div>
+
+<div class="section" id="data">
+    <h2>Część 1: Wprowadzenie i Ładowanie Danych</h2>
+    <h3>Ładowanie danych z pliku FTR</h3>
+    <p>Plik FTR to plik tekstowy o następującym formacie:</p>
+    <ul>
+        <li>Każda linia tekstu opisuje jeden obiekt i jego powiązane wartości.</li>
+        <li>Wszystkie wartości w jednej linii tekstu są oddzielone przecinkami.</li>
+        <li>Pierwsza wartość każdego obiektu w pliku to ciąg opisujący klasę, do której należy obiekt.</li>
+        <li>Niektóre wartości mają typ tablicy. W takim przypadku wartości należące do tablicy są ujęte w nawiasy kwadratowe i oddzielone średnikami.</li>
+    </ul>
+    <p>Aplikacja powinna odczytywać dane z pliku FTR (przykładowy plik jest dostarczony) i przechowywać je w pamięci w postaci obiektów odpowiednich klas. Wartości dla każdej klasy obiektów są opisane w pliku FTRFormat.pdf. Kod powinien być łatwo modyfikowalny, np. w przypadku pojawienia się nowej klasy lub zupełnie nowego źródła danych.</p>
+
+    <h3>Serializacja do pliku JSON</h3>
+    <p>Po załadowaniu danych, aplikacja powinna zapisać dane do pliku JSON w formacie odpowiadającym klasom zdefiniowanym w programie. Kod powinien być łatwo modyfikowalny na wypadek pojawienia się nowego formatu danych.</p>
+
+    <a href="flightRadarTasks/part1.pdf">Kliknij tutaj, aby przejść do części 1</a>
+
+    <h2>Część 2: Dodawanie Nowego Źródła Danych i Implementacja Komend Aplikacji</h2>
+
+    <h3>Dodawanie Nowego Źródła Danych</h3>
+    <p>Na tym etapie do programu dodane jest nowe źródło danych. To źródło danych symuluje serwer TCP przesyłający informacje o lotach. Jest dostarczone w postaci klasy z biblioteki NetworkSourceSimulator.dll, która jest dodana do projektu. Źródło danych przekształca plik .ftr w komunikaty binarne, które następnie są dostarczane użytkownikowi.</p>
+
+    <h3>Implementacja Tworzenia Zrzutu i Zakończenie Aplikacji</h3>
+    <p>Podczas działania aplikacja nasłuchuje na komendy wpisywane z linii poleceń. Gdy zarejestrowana zostanie komenda "print", aplikacja serializuje wszystkie dostępne dane (odczytane z nowego źródła) do pliku "snapshot_HH_MM_SS.json". Komenda "exit" zamyka aplikację i zwalnia wszystkie zasoby (wątki, procesy).</p>
+
+    <a href="flightRadarTasks/part2.pdf">Kliknij tutaj, aby przejść do części 2</a>
+
+    <h2>Część 3: Synchronizacja Danych z GUI</h2>
+
+    <h3>Dodanie Synchronizacji z GUI</h3>
+    <p>Na tym etapie zadaniem jest dodanie synchronizacji danych uzyskanych z serwera lub pliku tekstowego z graficznym interfejsem użytkownika (GUI). Aplikacja z interfejsem została przygotowana i może być zaimportowana do projektu za pomocą pakietu NuGet. Wszystkie niezbędne metody do interakcji z kontrolkami okien zostały wydzielone do osobnych funkcji.</p>
+
+    <h3>Wygląd Aplikacji i Komunikacja</h3>
+    <p>Okno aplikacji składa się z mapy świata z ikonami reprezentującymi pozycje samolotów w danym momencie. Wszystkie samoloty, dla których istnieje lot w przechowywanej bazie danych, są wyświetlane na mapie. Pozycje samolotów są stale odświeżane. Ruch jest na tyle minimalny, że zaleca się powiększenie mapy, aby obserwować ruch samolotów. Wyświetlana mapa może być powiększana za pomocą przewijania myszą.</p>
+
+    <h3>Struktura Klas FlightGUIData i FlightGUI</h3>
+    <p>Dane przyjmowane przez funkcję UpdateGUI są w formie obiektu klasy FlightsGUIData. Obiekty w wewnętrznej liście flightsData mają formę obiektów klasy FlightGUI. ID to unikalny identyfikator lotu. WorldPosition to struktura przechowująca szerokość i długość geograficzną. MapCoordRotation to kąt między wektorem kierunku lotu w koordynatach mapy a wektorem (0,1), podany w radianach.</p>
+
+    <a href="flightRadarTasks/part3.pdf">Kliknij tutaj, aby przejść do części 3</a>
+
+    <h2>Część 4: Generowanie Wiadomości przez Dostawców Wiadomości</h2>
+
+    <h3>Wprowadzenie</h3>
+    <p>Dodaj generowanie wiadomości przez dostawców wiadomości (telewizja, radio i gazety) do programu na temat jednego z następujących obiektów: lotnisko, samolot cargo lub samolot pasażerski.</p>
+
+    <h3>Dostawcy Wiadomości</h3>
+    <p>Dodaj trzy nowe klasy do programu: Telewizja, Radio, Gazeta. Każdy typ dostawcy wiadomości powinien mieć właściwość z jego nazwą. Obiekty, o których mogą być tworzone raporty, powinny implementować nowy interfejs: IReportable. W przyszłości bardziej prawdopodobne jest, że zostaną dodani nowi dostawcy wiadomości niż nowe obiekty raportowane. Dodaj funkcje do klas dostawców wiadomości, które przyjmują obiekt, o którym raportują, i zwracają ciąg opisujący ten obiekt.</p>
+
+    <h3>Klasa NewsGenerator</h3>
+    <p>W programie każda wiadomość powinna być generowana przez obiekt nowej klasy: NewsGenerator. Jego konstruktor powinien przyjmować dwa argumenty: listę dostawców wiadomości oraz listę obiektów implementujących IReportable. Generowanie tekstu powinno być zaimplementowane w metodzie GenerateNextNews, która wybiera kolejną parę należącą do iloczynu kartezjańskiego list przekazanych do konstruktora i zwraca odpowiednią wiadomość w formie ciągu znaków lub null, jeśli wszystkie pary zostały wyczerpane.</p>
+
+    <h3>Generowanie Raportów Wiadomości</h3>
+    <p>Aplikacja powinna generować raporty wiadomości co 10 sekund, z każdym raportem reprezentującym jedną wiadomość dotyczącą losowego obiektu. Wydrukuj wygenerowaną wiadomość w konsoli. Dodaj funkcję zatrzymującą generowanie wiadomości, gdy liczba wygenerowanych wiadomości osiągnie 10.</p>
+
+    <a href="flightRadarTasks/part4.pdf">Kliknij tutaj, aby przejść do części 4</a>
+
+    <h2>Część 5: Aktualizacja Stanu Wcześniej Załadowanych Obiektów</h2>
+
+    <h3>Źródło Danych</h3>
+    <p>Źródło danych symulujące źródło sieciowe użyte w poprzednich etapach zostało wzbogacone o mechanizm raportowania zmian w danych obiektów. Interfejs źródła obejmuje teraz 3 dodatkowe zdarzenia: OnIDUpdate, OnPositionUpdate i OnContactInfoUpdate. Zdarzenia te mogą być zgłaszane w dowolnym momencie, gdy źródło danych jest uruchomione. Należy stworzyć system, który umożliwi łatwą obsługę nowych typów zdarzeń aktualizujących obiekty.</p>
+
+    <h3>OnIDUpdate</h3>
+    <p>Zdarzenie jest zdefiniowane w następujący sposób: public event IDUpdate? OnIDUpdate; public delegate void IDUpdate(object sender, IDUpdateArgs args); public class IDUpdateArgs { public UInt64 ObjectID { get; init; } public UInt64 NewObjectID { get; init; } } ObjectID – aktualne ID obiektu, NewObjectID – nowe ID obiektu.</p>
+
+    <h3>OnPositionUpdate</h3>
+    <p>Zdarzenie jest zdefiniowane w następujący sposób: public event PositionUpdate? OnPositionUpdate; public class PositionUpdateArgs { public UInt64 ObjectID { get; init; } public Single Longitude { get; init; } public Single Latitude { get; init; } public Single AMSL { get; init; } } ObjectID – aktualne ID obiektu, Longitude – nowa długość geograficzna, Latitude – nowa szerokość geograficzna, AMSL – nowa wysokość nad poziomem morza. Wszystkie wyświetlane loty powinny być aktualizowane zgodnie z nowymi danymi. Jeśli aktualizacja dotyczy lotu lub samolotu, bieżąca pozycja lotu/samolotu powinna zostać ustawiona na nowe wartości, a interpolacja powinna odbywać się z tej pozycji do docelowej.</p>
+
+    <h3>OnContactInfoUpdate</h3>
+    <p>Zdarzenie jest zdefiniowane w następujący sposób: public event ContactInfoUpdate? OnContactInfoUpdate; public delegate void ContactInfoUpdate(object sender, ContactInfoUpdateArgs args); public class ContactInfoUpdateArgs { public UInt64 ObjectID { get; init; } public string PhoneNumber { get; init; } public string EmailAddress { get; init; } } ObjectID – aktualne ID obiektu, PhoneNumber – nowy numer telefonu, EmailAddress – nowy adres e-mail.</p>
+
+    <h3>Integracja</h3>
+    <p>Zaktualizowane źródło danych ma współpracować z danymi załadowanymi z pliku .ftr. Aplikacja powinna najpierw załadować wszystkie dane z pliku .ftr, a następnie uruchomić symulator źródła sieciowego z podanym przykładowym plikiem .ftre i obsłużyć zgłoszone zdarzenia (w tym te z nowymi danymi). Wszystkie zmiany wprowadzone do istniejących danych powinny być zapisywane do pliku tekstowego. Logi powinny zawierać informacje o statusie przed i po modyfikacji. Logi z każdego dnia powinny być zapisane do osobnych plików. Powinna istnieć możliwość rozróżnienia między różnymi uruchomieniami aplikacji w tym samym dniu.</p>
+
+    <a href="flightRadarTasks/part5.pdf">Kliknij tutaj, aby przejść do części 5</a>
+
+    <h2>Część 6: Dodanie Mechanizmu Wyszukiwania i Filtrowania</h2>
+
+    <h3>System Komend i Zapytania</h3>
+    <p>Twoim zadaniem jest rozszerzenie aplikacji o zestaw dodatkowych komend: wyświetl, zaktualizuj, usuń i dodaj. Te komendy umożliwiają wyświetlanie danych w formacie tabelarycznym, aktualizację danych, usuwanie wybranych danych oraz dodawanie nowych danych. Komendy mogą być używane z różnymi parametrami i warunkami do manipulowania danymi.</p>
+
+    <h3>Klasy Obiektów i Pola</h3>
+    <p>Komendy mogą być używane z różnymi klasami obiektów, takimi jak Załoga, Pasażer, Ładunek, Samolot Cargo, Samolot Pasażerski, Lotnisko lub Lot. Każda z tych klas ma określone pola, które mogą być manipulowane za pomocą komend.</p>
+
+    <h3>Warunki i Pary Klucz-Wartość</h3>
+    <p>Komendy mogą być używane z warunkami i parami klucz-wartość, aby określić, które dane mają być manipulowane i jak. Warunki składają się z nazwy pola klasy obiektu, operatora (=, <=, >=, !=) i wartości. Pary klucz-wartość składają się z nazwy pola danej klasy obiektu i wartości, oddzielonych znakiem równości.</p>
+
+    <h3>Format Wyświetlania Tabeli</h3>
+    <p>Tabela w konsoli jest wyświetlana w specyficznym formacie, w którym nagłówki kolumn są wyrównane do lewej strony, a wartości do prawej. Kolumny są dostosowane szerokością do najdłuższej wartości w kolumnie i zawsze mają odstęp 1 spacji od krawędzi kolumny.</p>
+
+    <h3>Metody Projektowania Obiektowego</h3>
+    <p>Wszystkie funkcjonalności muszą być zaimplementowane przy użyciu metod projektowania obiektowego, tzn. osobnego parsowania komend, tworzenia zapytań, wykonywania zapytań i prezentacji wyników w formacie tabelarycznym. Komendy i funkcjonalność z poprzednich etapów muszą również nadal działać poprawnie. Należy pamiętać, że użycie mechanizmów refleksji jest surowo zabronione.</p>
+
+    <a href="flightRadarTasks/part6.pdf">Kliknij tutaj, aby przejść do części 6</a>
+</div>
+
+    <div class="section" id="contact">
+        <h1>Kontakt</h1>
+        <div class="photo-text-section">
+            <div class="text">
+                <p>
+                    Skontaktuj się ze mną, jeśli masz jakiekolwiek pytania. Możesz się ze mną skontaktować za pomocą e-maila lub mediów społecznościowych. Nawet jeśli widzisz tę stronę w innych językach, mój preferowany język komunikacji to angielski.
+                </p>
+
+                <div class="contact-info">
+                    <div class="logo">
+                        <a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                            <img src="../../../../photos/logos/facebook.png" class="logo" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="logo">
+                        <a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                            <img src="../../../../photos/logos/linkedin.png" class="logo" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="logo">
+                        <a href="https://github.com/Hammershlag" target="_blank">
+                            <img src="../../../../photos/logos/github.png" class="logo" alt="Github">
+                        </a>
+                    </div>
+                    <div class="logo">
+                        <a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                            <img src="../../../../photos/logos/instagram.png" class="logo" alt="Instagram">
+                        </a>
+                    </div>
+                    <div class="logo">
+                        <a href="mailto:tomekzbroszczyk@gmail.com">
+                            <img src="../../../../photos/logos/email.png" class="logo" alt="tomekzbroszczyk@gmail.com">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p><a href="https://hammershlag.github.io/home.html">&copy; 2023 Tomasz Zbroszczyk</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+

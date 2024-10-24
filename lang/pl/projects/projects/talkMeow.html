@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkMeow - Portfolio Osobiste</title>
+    <link rel="stylesheet" href="../../../../css/stylesheet.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/photos/logo.png" />
+</head>
+
+<body>
+<div class="header">
+    <div class="logo">
+        <a class="nav-link" href="../../home.html">
+            <img src="/photos/logo.png" alt="Tomasz Zbroszczyk" class="logo">
+        </a>
+    </div>
+    <div class="back-button">
+        <a href="javascript:history.back()" class="button">Wstecz</a>
+    </div>
+</div>
+
+<div class="section" id="talkMeowTitle">
+    <h1>TalkMeow: Aplikacja Czatu w Czasie Rzeczywistym dla Miłośników Kotów</h1>
+</div>
+
+<div class="section" id="talkMeow">
+    <p>
+    <h2>Wprowadzenie</h2>
+    TalkMeow to aplikacja czatu w czasie rzeczywistym stworzona dla miłośników kotów. Platforma umożliwia użytkownikom
+    łączenie się z przyjaciółmi, rozmowy w czasie rzeczywistym oraz cieszenie się bezpiecznym i przyjemnym doświadczeniem użytkownika.
+    Aplikacja oferuje role takie jak gość, zalogowany użytkownik, menedżer i administrator, z których każda ma unikalne funkcje i uprawnienia.
+    </p>
+
+    <p>
+    <h2>Funkcje dla Użytkownika Gościa</h2>
+    <ul>
+        <li>Uproszczony Pasek Nawigacyjny: Zawiera opcje takie jak Strona Główna, Logowanie i Rejestracja.</li>
+        <li>Strona Główna: Zawiera przyciski logowania i rejestracji w celu łatwego dostępu do konta.</li>
+        <li>Strony Logowania i Rejestracji: Umożliwiają użytkownikom logowanie lub tworzenie nowych kont.</li>
+        <li>Resetowanie Hasła: Trzystopniowy proces umożliwiający odzyskanie konta przez użytkowników.</li>
+    </ul>
+    </p>
+
+    <p>
+    <h2>Funkcje dla Zalogowanego Użytkownika</h2>
+    <ul>
+        <li>Rozszerzony Pasek Nawigacyjny: Zawiera funkcję wyszukiwania oraz dostęp do profilu użytkownika.</li>
+        <li>Zarządzanie Profilem: Użytkownicy mogą przeglądać i edytować swoje nazwy użytkownika, hasła i awatary.</li>
+        <li>Rozmowy: Czat w czasie rzeczywistym z powiadomieniami o wiadomościach i wskaźnikami statusu (wysłane/widoczne).</li>
+        <li>Wyszukiwanie: Użytkownicy mogą wyszukiwać innych po nazwie użytkownika i rozpoczynać rozmowy.</li>
+    </ul>
+    </p>
+
+    <p>
+    <h2>Funkcje Menedżera</h2>
+    <ul>
+        <li>Dodawanie Nowych Awatarów: Menedżerowie mogą przesyłać nowe awatary i zarządzać istniejącymi.</li>
+        <li>Przegląd Awatarów: Menedżerowie mogą zapewnić jakość awatarów za pomocą dedykowanego interfejsu.</li>
+    </ul>
+    </p>
+
+    <p>
+    <h2>Funkcje Administratora</h2>
+    <ul>
+        <li>Zarządzanie Dostępem: Administratorzy mają dostęp do wszystkich funkcji użytkowników i menedżerów.</li>
+        <li>Zarządzanie Użytkownikami: Administratorzy mogą banować lub odbanowywać użytkowników oraz zarządzać niewłaściwymi wiadomościami.</li>
+        <li>Wiadomości Podejrzane: Administratorzy mogą zatwierdzać lub odrzucać zgłoszone wiadomości oraz przeglądać zbanowanych użytkowników.</li>
+    </ul>
+    </p>
+</div>
+
+<div class="section" id="data">
+    <div class="photo-text-section">
+        <div class="text">
+            <h2>Kluczowe Funkcje</h2>
+            <ul>
+                <li>Wiadomości w Czasie Rzeczywistym: Wysyłanie i odbieranie wiadomości natychmiastowo z obsługą WebSocket.</li>
+                <li>Zarządzanie Użytkownikami: Kontrola dostępu oparta na rolach dla użytkowników gości, zwykłych użytkowników, menedżerów i administratorów.</li>
+                <li>Przesyłanie Awatarów: Menedżerowie mogą przesyłać awatary i przeglądać je pod kątem jakości.</li>
+                <li>Funkcje Zabezpieczeń: Bezpieczne logowanie, integracja z Spring Boot Security oraz szyfrowanie danych.</li>
+                <li>Obsługa Bazy Danych: Baza danych PostgreSQL z konfiguracją failover w Dockerze.</li>
+            </ul>
+
+            <h2>Wyzwania i Nauka</h2>
+            <p>Tworzenie TalkMeow było cennym doświadczeniem edukacyjnym, które obejmowało wdrożenie wiadomości w czasie rzeczywistym za pomocą WebSocket, kontrolę dostępu opartą na rolach oraz integrację zaawansowanych funkcji zabezpieczeń. Technologie takie jak Java, Spring Boot, Thymeleaf i PostgreSQL były kluczowe w budowie tego projektu. Aplikacja kładzie nacisk na bezpieczeństwo użytkowników, skalowalność oraz bezproblemowe korzystanie z czatu.</p>
+            <p>Aby zobaczyć zrzuty ekranu z tej aplikacji, kliknij <a href="https://hammershlag.github.io/lang/pl/projects/talkMeowScreenshots.html" style="font-weight: bold">TUTAJ</a></p>
+            <p>Więcej szczegółów na temat TalkMeow i innych projektów znajdziesz na moim <a href="https://github.com/Hammershlag/TalkMeow" style="text-decoration-line: underline">GitHubie</a>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="important">
+    <h1>Ważne</h1>
+    <ul>
+        <li>Język: Java</li>
+        <li>Czas: Październik 2024</li>
+        <li>Technologie:
+            <ul>
+                <li>Java 21</li>
+                <li>Spring Boot</li>
+                <li>Thymeleaf</li>
+                <li>JavaScript</li>
+                <li>WebSockets</li>
+                <li>Azure</li>
+                <li>PostgreSQL</li>
+                <li>Docker</li>
+            </ul>
+        </li>
+    </ul>
+    <p>Ten projekt prezentuje zaawansowane wdrożenie wiadomości w czasie rzeczywistym z naciskiem na bezpieczeństwo i doświadczenie użytkownika.</p>
+</div>
+
+<!-- Sekcja Kontaktowa -->
+<div class="section" id="contact">
+    <h1>Kontakt</h1>
+    <div class="photo-text-section">
+        <div class="text">
+            <p>Zapraszam do kontaktu w sprawie pytań lub zapytań poprzez e-mail lub media społecznościowe. Mimo że ta strona obsługuje wiele języków, preferuję komunikację w języku angielskim.</p>
+            <div class="contact-info">
+                <div class="logo"><a href="https://www.facebook.com/tomasz.zbroszczyk.7/" target="_blank">
+                    <img src="../../../../photos/logos/facebook.png" alt="Facebook"></a>
+                </div>
+                <div class="logo"><a href="https://www.linkedin.com/in/tomasz-zbroszczyk-61b316278/" target="_blank">
+                    <img src="../../../../photos/logos/linkedin.png" alt="LinkedIn"></a>
+                </div>
+                <div class="logo"><a href="https://github.com/Hammershlag" target="_blank">
+                    <img src="../../../../photos/logos/github.png" alt="GitHub"></a>
+                </div>
+                <div class="logo"><a href="https://www.instagram.com/tzbroszczyk/" target="_blank">
+                    <img src="../../../../photos/logos/instagram.png" alt="Instagram"></a>
+                </div>
+                <div class="logo">
+                    <a href="mailto:tomekzbroszczyk@gmail.com">
+                        <img src="../../../../photos/logos/email.png" class="logo" alt="tomekzbroszczyk@gmail.com">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><a href="https://hammershlag.github.io/home.html">&copy; 2024 Tomasz Zbroszczyk</a></p>
+    </div>
+</footer>
+
+</body>
+
+</html>
