@@ -28,11 +28,11 @@ body {
     justify-content: center;
     align-content: center;
 }
-#home, #services, #testimonials , #projects, #important, #simpleShop, #flightRadar, #merchStore  {
+#home, #services, #testimonials , #projects, #important, #simpleShop, #flightRadar, #merchStore, #talkMeow  {
     background-color: #222222;
 }
 
-#about, #portfolio, #contact, #data, #simpleShopTitle, #flightRadarTitle, #merchStoreTitle {
+#about, #portfolio, #contact, #data, #simpleShopTitle, #flightRadarTitle, #merchStoreTitle, #talkMeowTitle {
     background-color: #444444;
 }
 
